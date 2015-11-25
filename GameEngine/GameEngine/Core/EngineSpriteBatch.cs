@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using GameEngine.Components.Rendering;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace GameEngine.Core
         /// </summary>
         public new void Begin()
         {
+            if(Camera.main == null)
+                return;
+
             if (!active)
             {
                 base.Begin();
@@ -39,9 +43,12 @@ namespace GameEngine.Core
         /// <param name="blendState">Blending options.</param>
         public new void Begin(SpriteSortMode sortMode, BlendState blendState)
         {
+            if(Camera.main == null)
+                return;
+
             if (!active)
             {
-                base.Begin(sortMode, blendState);
+                base.Begin(sortMode, blendState, SamplerState.AnisotropicClamp,DepthStencilState.Default,RasterizerState.CullCounterClockwise, null, Camera.main.TransformMatrix);
                 active = true;
             }
         }
@@ -58,9 +65,12 @@ namespace GameEngine.Core
         /// <param name="rasterizerState">Rasterization options.</param>
         public new void Begin(SpriteSortMode sortMode, BlendState blendState, SamplerState samplerState, DepthStencilState depthStencilState, RasterizerState rasterizerState)
         {
+            if(Camera.main == null)
+                return;
+
             if (!active)
             {
-                base.Begin(sortMode, blendState, samplerState, depthStencilState, rasterizerState);
+                base.Begin(sortMode, blendState, samplerState, depthStencilState, rasterizerState, null, Camera.main.TransformMatrix);
                 active = true;
             }
         }
@@ -80,9 +90,12 @@ namespace GameEngine.Core
         /// <param name="effect">Effect state options.</param>
         public new void Begin(SpriteSortMode sortMode, BlendState blendState, SamplerState samplerState, DepthStencilState depthStencilState, RasterizerState rasterizerState, Effect effect)
         {
+            if(Camera.main == null)
+                return;
+
             if (!active)
             {
-                base.Begin(sortMode, blendState, samplerState, depthStencilState, rasterizerState, effect);
+                base.Begin(sortMode, blendState, samplerState, depthStencilState, rasterizerState, effect, Camera.main.TransformMatrix);
                 active = true;
             }
         }
@@ -97,15 +110,18 @@ namespace GameEngine.Core
         /// <param name="effect">Effect state options.</param>
         public void Begin(Effect effect)
         {
+            if(Camera.main == null)
+                return;
+
             if (!active)
             {
-                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, effect);
+                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, effect, Camera.main.TransformMatrix);
                 active = true;
             }
             else
             {
                 base.End();
-                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, effect);
+                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, effect, Camera.main.TransformMatrix);
             }
         }
         /// <summary>

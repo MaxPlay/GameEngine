@@ -1,4 +1,5 @@
-﻿using GameEngine.Components.Rendering;
+﻿using GameEngine.Components.Audio;
+using GameEngine.Components.Rendering;
 using GameEngine.Core;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,22 @@ namespace GameEngine.Assets
         List<GameObject> gameObjects;
 
         List<Renderer> renderers;
+        public Camera MainCamera { get { return Camera.main; } }
+        public AudioListener MainAudioListener { get { return AudioListener.main; } }
+
+        protected List<int> audioSourceIndices;
+
+        public static Level main;
 
         public Level(string name, string filename)
             : base(name, filename)
         {
             gameObjects = new List<GameObject>();
             renderers = new List<Renderer>();
+            audioSourceIndices = new List<int>();
+
+            if (main == null)
+                main = this;
         }
 
         public void Update()
@@ -30,7 +41,7 @@ namespace GameEngine.Assets
         {
             for (int i = 0; i < renderers.Count; i++)
             {
-                renderers[i].Draw();
+                renderers[i].Draw(MainCamera.TransformMatrix);
             }
         }
 

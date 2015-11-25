@@ -14,8 +14,12 @@ namespace GameEngine.Components.Rendering
     {
         public static Camera main;
 
+
+        private Color backgroundColor;
         private float zoom;
         private Rectangle bounds;
+
+        public Color BackgroundColor { get { return this.backgroundColor; } set { this.backgroundColor = value; } }
 
         public Matrix TransformMatrix
         {

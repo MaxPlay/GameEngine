@@ -29,7 +29,7 @@ namespace GameEngine.Components.Rendering
             throw new NotImplementedException();
         }
 
-        public virtual void Draw()
+        public virtual void Draw(Matrix TransformMatrix)
         {
             Bootstrap.spriteBatch.Begin(Material.Shader);
             if (!isAnimated)

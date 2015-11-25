@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input.Extra;
 using Microsoft.Xna.Framework.Media;
 using GameEngine.Assets;
 using GameEngine.Components.Audio;
+using GameEngine.Components.Rendering;
 
 namespace GameEngine.Core
 {
@@ -58,7 +59,7 @@ namespace GameEngine.Core
             spriteBatch = new EngineSpriteBatch(GraphicsDevice);
 
             test = Content.Load<Texture2D>("yellowbox");
-            map = new ImageMap("cucumber","Cucumber.png");
+            map = new ImageMap("cucumber", "Cucumber.png");
             map.Load();
             audio = new AudioFile("audio", "test.ogg");
             audio.Load();
@@ -150,13 +151,13 @@ namespace GameEngine.Core
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Camera.main != null ? Camera.main.BackgroundColor : Color.Black);
 
             spriteBatch.Begin();
 
             spriteBatch.Draw(
                 map.Texture,
-                Vector2.One*20,
+                Vector2.One * 20,
                 map[2],
                 Color.White,
                 0,
