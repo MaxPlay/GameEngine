@@ -17,7 +17,10 @@ namespace GameEngine.Assets
             get
             {
                 if (subimages.Count <= index || index < 0)
-                    return texture.Bounds != null ? texture.Bounds : Rectangle.Empty;
+                    if (texture.Bounds != null)
+                        return texture.Bounds;
+                    else
+                        return Rectangle.Empty;
                 else
                     return subimages[index];
             }
@@ -41,7 +44,7 @@ namespace GameEngine.Assets
                 while (reader.Read())
                 {
 
-                    if(reader.NodeType == XmlNodeType.Element)
+                    if (reader.NodeType == XmlNodeType.Element)
                         switch (reader.Name)
                         {
                             case "x":
