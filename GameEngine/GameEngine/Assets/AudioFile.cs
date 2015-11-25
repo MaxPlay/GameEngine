@@ -6,10 +6,6 @@ using System.Text;
 using System.IO;
 using GameEngine.Extension;
 using Microsoft.Xna.Framework.Audio;
-using NVorbis;
-using NVorbis.NAudioSupport;
-using NVorbis.Ogg;
-using NVorbis.OpenTKSupport;
 
 namespace GameEngine.Assets
 {
@@ -17,6 +13,8 @@ namespace GameEngine.Assets
     {
         SoundEffect soundEffect;
         string encodername;
+
+        public SoundEffect SoundEffect { get { return this.soundEffect; } }
 
         public AudioFile(string name, string filename)
             : base(name, filename)
@@ -54,7 +52,7 @@ namespace GameEngine.Assets
 
         private void LoadOggFromFile()
         {
-            //SoundEffect.FromStream(new OggStream());
+            soundEffect = OggSharp.OggToWave.LoadOggAsSoundEffect("Audio/" + this.filename);
         }
 
         /// <summary>

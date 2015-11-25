@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Extra;
 using Microsoft.Xna.Framework.Media;
 using GameEngine.Assets;
+using GameEngine.Components.Audio;
 
 namespace GameEngine.Core
 {
@@ -43,7 +44,6 @@ namespace GameEngine.Core
             m = new GameObject();
             n = new GameObject();
             n.Transform.Position = Vector2.One * 10;
-            n.Transform.Parent = m.Transform;
 
             base.Initialize();
         }
@@ -60,8 +60,17 @@ namespace GameEngine.Core
             test = Content.Load<Texture2D>("yellowbox");
             map = new ImageMap("cucumber","Cucumber.png");
             map.Load();
-            audio = new AudioFile("audio", "test.wav");
+            audio = new AudioFile("audio", "test.ogg");
             audio.Load();
+
+            AudioSource source = new AudioSource(n);
+            source.Active = true;
+            source.AddSound(audio);
+            source.Range = 200;
+            source.Volume = 1;
+
+            GameEngine.Components.Audio.AudioListener listener = new Components.Audio.AudioListener(m);
+            listener.RegisterSource(source);
         }
 
         /// <summary>

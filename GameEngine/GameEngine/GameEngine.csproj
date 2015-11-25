@@ -85,22 +85,17 @@
     <Reference Include="Microsoft.Xna.Framework.Video, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="mscorlib" />
-    <Reference Include="NVorbis">
-      <HintPath>..\..\Lib\NVorbis.dll</HintPath>
-    </Reference>
-    <Reference Include="NVorbis.NAudioSupport">
-      <HintPath>..\..\Lib\NVorbis.NAudioSupport.dll</HintPath>
-    </Reference>
-    <Reference Include="NVorbis.OpenTKSupport">
-      <HintPath>..\..\Lib\NVorbis.OpenTKSupport.dll</HintPath>
+    <Reference Include="OggSharp">
+      <HintPath>..\..\Lib\OggSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Net" />
-    <Reference Include="XNAInput">
-      <HintPath>..\..\..\XNAInput\XNAInput\bin\x86\Release\XNAInput.dll</HintPath>
+    <Reference Include="XNAInput, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\XNAInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

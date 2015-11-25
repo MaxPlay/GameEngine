@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Extra;
 using Microsoft.Xna.Framework;
 
-namespace GameEngine.Comonents.UI
+namespace GameEngine.Components.UI
 {
     [RequireComponent(typeof(UIRenderer))]
     class Button : Component
