@@ -11,10 +11,14 @@ namespace GameEngine.Components.Audio
     {
         List<AudioSource> sceneSources;
 
+        public static AudioListener main;
+
         public AudioListener(GameObject gameObject)
             : base(gameObject)
         {
             this.sceneSources = new List<AudioSource>();
+            if (main == null)
+                main = this;
         }
 
         public override void Reset()

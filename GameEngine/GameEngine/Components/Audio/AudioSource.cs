@@ -23,15 +23,20 @@ namespace GameEngine.Components.Audio
         public AudioChannels SourceType { get { return this.sourceType; } }
         public SoundEffectInstance Audio { get { return this.audio; } set { this.audio = value; } }
 
+        public bool Looped { get { return this.audio.IsLooped; } set { if(this.audio != null) this.audio.IsLooped = value; } }
+
         public AudioSource(GameObject gameObject)
             : base(gameObject)
         {
-
+            Reset();
         }
 
         public override void Reset()
         {
-
+            this.range = 1;
+            this.active = true;
+            this.volume = 1;
+            this.Looped = false;
         }
 
         public void AddSound(AudioFile audiofile)
