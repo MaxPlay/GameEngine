@@ -16,7 +16,7 @@ namespace GameEngine.Exception
             : base("Level.main is not set, yet a component tries to access it.")
         { }
         /// <summary>
-        /// Initializes a new instance of the System.IO.FileNotFoundException class with
+        /// Initializes a new instance of the GameEngine.Exception.LevelNotSetException class with
         /// the specified serialization and context information.
         /// </summary>
         /// <param name="info">An object that holds the serialized object data about the exception being thrown.</param>

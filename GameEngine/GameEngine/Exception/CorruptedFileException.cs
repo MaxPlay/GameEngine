@@ -6,25 +6,21 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Exception
 {
-    class FileNotSupportedException : System.Exception
+    class CorruptedFileException : System.Exception
     {
         private string fileName;
 
         /// <summary>
         /// The filename of the file that was loaded. Check the log.
         /// </summary>
-        public string FileName { get { return fileName; } set { this.fileName = value; CreateLog(); } }
-        /// <summary>
-        /// The log generated from the filename;
-        /// </summary>
-        public string Log;
+        public string FileName { get { return fileName; } set { this.fileName = value; } }
 
         /// <summary>
         /// Initializes a new instance of the GameEngine.Exception.FileNotSupportedException class with
         /// its message string set to a system-supplied message and its HRESULT set to
         /// COR_E_FILENOTFOUND.
         /// </summary>
-        public FileNotSupportedException()
+        public CorruptedFileException()
             : base()
         { fileName = string.Empty; }
 
@@ -35,7 +31,7 @@ namespace GameEngine.Exception
         /// <param name="message">A description of the error. The content of message is intended to be understood
         /// by humans. The caller of this constructor is required to ensure that this
         /// string has been localized for the current system culture.</param>
-        public FileNotSupportedException(string message)
+        public CorruptedFileException(string message)
             : base(message)
         { fileName = string.Empty; }
 
@@ -49,7 +45,7 @@ namespace GameEngine.Exception
         /// string has been localized for the current system culture.</param>
         /// <param name="filename">The filename that is described by the exception. If the
         /// entry is empty, a default log will be saved.</param>
-        public FileNotSupportedException(string message, string filename)
+        public CorruptedFileException(string message, string filename)
             : base(message)
         { FileName = filename; }
 
@@ -64,7 +60,7 @@ namespace GameEngine.Exception
         /// <param name="innerException">The exception that is the cause of the current exception. If the innerException
         /// parameter is not null, the current exception is raised in a catch block that
         /// handles the inner exception.</param>
-        public FileNotSupportedException(string message, System.Exception innerException)
+        public CorruptedFileException(string message, System.Exception innerException)
             : base(message, innerException)
         { fileName = string.Empty; }
 
@@ -74,13 +70,8 @@ namespace GameEngine.Exception
         /// </summary>
         /// <param name="info">An object that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">An object that contains contextual information about the source or destination.</param>
-        protected FileNotSupportedException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+        protected CorruptedFileException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
             : base(info, context)
         { fileName = string.Empty; }
-
-        protected void CreateLog()
-        {
-            this.Log = (FileName != string.Empty) ? "This filetype or codec is not supported. Are you missing an Assembly?" : "The filetype could not be retrieved.";
-        }
     }
 }
