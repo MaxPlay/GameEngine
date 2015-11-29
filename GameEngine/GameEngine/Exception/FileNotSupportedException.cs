@@ -80,7 +80,7 @@ namespace GameEngine.Exception
 
         protected void CreateLog()
         {
-            this.Log = (FileName != string.Empty) ? "This filetype or codec is not supported. Are you missing an Assembly." : "The filetype could not be retrieved.";
+            this.Log = (FileName != string.Empty) ? "This filetype or codec is not supported. Are you missing an Assembly?" : "The filetype could not be retrieved.";
         }
     }
 }

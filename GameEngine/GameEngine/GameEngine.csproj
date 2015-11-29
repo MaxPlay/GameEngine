@@ -108,7 +108,9 @@
     <Compile Include="Attributes\SingleInstanceComponent.cs" />
     <Compile Include="Components\Audio\AudioListener.cs" />
     <Compile Include="Components\Audio\AudioSource.cs" />
+    <Compile Include="Components\Rendering\BaseRenderer.cs" />
     <Compile Include="Components\Rendering\Camera.cs" />
+    <Compile Include="Exception\LevelNotSetException.cs" />
     <Compile Include="Components\Rendering\Renderer.cs" />
     <Compile Include="Components\Rendering\UIRenderer.cs" />
     <Compile Include="Core\Asset.cs" />
@@ -119,7 +121,6 @@
     <Compile Include="Core\Gizmo.cs" />
     <Compile Include="Core\Handle.cs" />
     <Compile Include="Assets\Level.cs" />
-    <Compile Include="Core\Level.cs" />
     <Compile Include="Core\Random.cs" />
     <Compile Include="Core\Ray2D.cs" />
     <Compile Include="Core\Space.cs" />

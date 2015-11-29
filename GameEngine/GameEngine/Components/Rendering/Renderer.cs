@@ -1,5 +1,6 @@
 ﻿using GameEngine.Assets;
 using GameEngine.Core;
+using GameEngine.Exception;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,7 +10,7 @@ using System.Text;
 
 namespace GameEngine.Components.Rendering
 {
-    class Renderer : Component
+    class Renderer : BaseRenderer
     {
         public Material Material;
         protected Image texture;
@@ -17,6 +18,7 @@ namespace GameEngine.Components.Rendering
 
         public ImageMap AnimatedTexture { get { return isAnimated ? (ImageMap)texture : null; } }
         public Image Texture { get { return texture; } set { texture = value; if (texture is ImageMap) isAnimated = true; } }
+
 
         public Renderer(GameObject gameObject)
             : base(gameObject)
@@ -29,7 +31,7 @@ namespace GameEngine.Components.Rendering
             throw new NotImplementedException();
         }
 
-        public virtual void Draw(Matrix TransformMatrix)
+        public override void Draw(Matrix TransformMatrix)
         {
             Bootstrap.spriteBatch.Begin(Material.Shader);
             if (!isAnimated)

@@ -31,6 +31,7 @@ namespace GameEngine.Core
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
         }
 
         /// <summary>

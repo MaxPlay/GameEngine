@@ -13,7 +13,7 @@ namespace GameEngine.Assets
     {
         List<GameObject> gameObjects;
 
-        List<Renderer> renderers;
+        List<BaseRenderer> renderers;
         public Camera MainCamera { get { return Camera.main; } }
         public AudioListener MainAudioListener { get { return AudioListener.main; } }
 
@@ -25,7 +25,7 @@ namespace GameEngine.Assets
             : base(name, filename)
         {
             gameObjects = new List<GameObject>();
-            renderers = new List<Renderer>();
+            renderers = new List<BaseRenderer>();
             audioSourceIndices = new List<int>();
 
             if (main == null)
@@ -52,6 +52,19 @@ namespace GameEngine.Assets
 
                 stream.Close();
             }
+        }
+
+        public bool RegisterRenderer(BaseRenderer renderer)
+        {
+            if (renderers.Contains(renderer))
+                return false;
+            renderers.Add(renderer);
+            return true;
+        }
+
+        public bool UnregisterRenderer(Renderer renderer)
+        {
+            return renderers.Remove(renderer);
         }
     }
 }
