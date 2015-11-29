@@ -19,6 +19,11 @@ namespace GameEngine.Components.Rendering
         public ImageMap AnimatedTexture { get { return isAnimated ? (ImageMap)texture : null; } }
         public Image Texture { get { return texture; } set { texture = value; if (texture is ImageMap) isAnimated = true; } }
 
+        public Renderer()
+            : base(null)
+        {
+
+        }
 
         public Renderer(GameObject gameObject)
             : base(gameObject)

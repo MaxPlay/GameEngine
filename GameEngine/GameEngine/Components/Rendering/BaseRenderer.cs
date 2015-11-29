@@ -26,6 +26,12 @@ namespace GameEngine.Components.Rendering
 
         }
 
+        public BaseRenderer()
+            : base(null)
+        {
+
+        }
+
         public BaseRenderer(GameObject gameObject)
             : base(gameObject)
         {

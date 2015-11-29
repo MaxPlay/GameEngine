@@ -13,6 +13,12 @@ namespace GameEngine.Components.Audio
 
         public static AudioListener main;
 
+        public AudioListener()
+            : base(null)
+        {
+
+        }
+
         public AudioListener(GameObject gameObject)
             : base(gameObject)
         {

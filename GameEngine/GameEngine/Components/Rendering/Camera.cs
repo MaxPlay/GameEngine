@@ -49,6 +49,16 @@ namespace GameEngine.Components.Rendering
             }
         }
 
+        public Camera()
+            : base(null)
+        {
+            if (main == null)
+                main = this;
+
+            this.bounds = new Rectangle(0, 0, Bootstrap.graphics.PreferredBackBufferWidth, Bootstrap.graphics.PreferredBackBufferHeight);
+            this.zoom = 1;
+        }
+
         public Camera(GameObject gameObject)
             : base(gameObject)
         {

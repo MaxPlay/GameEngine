@@ -3,7 +3,7 @@ using GameEngine.Core;
 
 namespace GameEngine
 {
-#if WINDOWS || XBOX
+#if WINDOWS
     static class Program
     {
         /// <summary>

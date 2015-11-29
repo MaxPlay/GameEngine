@@ -26,6 +26,7 @@ namespace GameEngine.Core
         Texture2D test;
         ImageMap map;
         AudioFile audio;
+        Font font;
 
         public Bootstrap()
         {
@@ -46,6 +47,7 @@ namespace GameEngine.Core
             m = new GameObject();
             n = new GameObject();
             n.Transform.Position = Vector2.One * 10;
+            m.AddComponent<Camera>();
 
             base.Initialize();
         }
@@ -73,6 +75,8 @@ namespace GameEngine.Core
 
             GameEngine.Components.Audio.AudioListener listener = new Components.Audio.AudioListener(m);
             listener.RegisterSource(source);
+
+            font = new Font("Arial", "Arial");
         }
 
         /// <summary>
@@ -143,6 +147,8 @@ namespace GameEngine.Core
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 m.Transform.Translate(Vector2.UnitY, Space.Local);
 
+            Console.WriteLine(m.GetComponent<Camera>().ToString());
+
             base.Update(gameTime);
         }
 
@@ -154,13 +160,25 @@ namespace GameEngine.Core
         {
             GraphicsDevice.Clear(Camera.main != null ? Camera.main.BackgroundColor : Color.Black);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(null);
 
-            spriteBatch.Draw(
+            /*spriteBatch.Draw(
                 map.Texture,
                 Vector2.One * 20,
                 map[2],
                 Color.White,
+                0,
+                Vector2.Zero,
+                1,
+                SpriteEffects.None,
+                0
+                );*/
+
+            spriteBatch.Draw(
+                font.chars['f'],
+                Vector2.One * 20,
+                null,
+                Color.Red,
                 0,
                 Vector2.Zero,
                 1,

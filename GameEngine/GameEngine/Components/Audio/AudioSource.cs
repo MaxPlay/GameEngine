@@ -25,6 +25,12 @@ namespace GameEngine.Components.Audio
 
         public bool Looped { get { return this.audio.IsLooped; } set { if(this.audio != null) this.audio.IsLooped = value; } }
 
+        public AudioSource()
+            : base(null)
+        {
+
+        }
+
         public AudioSource(GameObject gameObject)
             : base(gameObject)
         {

@@ -17,6 +17,12 @@ namespace GameEngine.Components.UI
         UIRenderer renderer;
         Rectangle AABB;
 
+        public Button()
+            : base(null)
+        {
+
+        }
+
         public Button(GameObject gameObject)
             : base(gameObject)
         {

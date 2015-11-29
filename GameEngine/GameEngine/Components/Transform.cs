@@ -142,6 +142,12 @@ namespace GameEngine.Components
             }
         }
 
+        public Transform()
+            : base(null)
+        {
+
+        }
+
         public Transform(GameObject gameObject)
             : base(gameObject)
         {
@@ -228,6 +234,17 @@ namespace GameEngine.Components
         public void Scale(float x, float y)
         {
             this.scale *= new Vector2(x, y);
+        }
+
+        public string ToString(string format)
+        {
+            switch (format)
+            {
+                case "full":
+                    return this.position.ToString() + "; " + rotation.ToString() + "; " + scale.ToString();
+                default:
+                    return base.ToString();
+            }
         }
     }
 }

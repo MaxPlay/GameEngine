@@ -30,7 +30,7 @@ namespace GameEngine.Core
 
             if (!active)
             {
-                base.Begin();
+                base.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, Camera.main.TransformMatrix);
                 active = true;
             }
         }

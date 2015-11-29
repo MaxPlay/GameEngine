@@ -33,6 +33,7 @@ namespace GameEngine.Core
             foreach (Component c in obj.components)
                 aquireComponents(c.GetType());
         }
+
         /// <summary>
         /// Adds Component by given Type.
         /// </summary>
@@ -80,6 +81,8 @@ namespace GameEngine.Core
             }
 
             components.Add(component);
+            component.GameObject = this;
+            component.Reset();
             return component;
         }
 

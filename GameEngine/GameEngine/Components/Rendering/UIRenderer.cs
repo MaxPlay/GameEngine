@@ -14,6 +14,12 @@ namespace GameEngine.Components.Rendering
 
         public Image BaseImage { get { return baseImage; } }
 
+        public UIRenderer()
+            : base(null)
+        {
+
+        }
+
         public UIRenderer(GameObject gameObject)
             : base(gameObject)
         {
