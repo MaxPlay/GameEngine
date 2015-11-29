@@ -50,7 +50,6 @@ namespace GameEngine.Assets
             using (FileStream stream = new FileStream("Levels/" + filename, FileMode.Open))
             {
 
-                stream.Close();
             }
         }
 
