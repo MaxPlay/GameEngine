@@ -35,7 +35,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter.cs" />
+    <Compile Include="Encoder.cs" />
     <Compile Include="FontTemplate.cs" />
     <Compile Include="Programm.cs" />
   </ItemGroup>

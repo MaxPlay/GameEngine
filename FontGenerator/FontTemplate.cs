@@ -7,12 +7,30 @@ using System.Threading.Tasks;
 
 namespace FontGenerator
 {
+    /// <summary>
+    /// The template for the fontencoder to generate the files.
+    /// </summary>
     class FontTemplate
     {
+        /// <summary>
+        /// The name of the font
+        /// </summary>
         public string Fontname;
+        /// <summary>
+        /// Is the font bold?
+        /// </summary>
         public bool Bold;
+        /// <summary>
+        /// Is the font italic?
+        /// </summary>
         public bool Italic;
+        /// <summary>
+        /// Is the font underlined?
+        /// </summary>
         public bool Underline;
+        /// <summary>
+        /// The size of the font
+        /// </summary>
         public int Size;
 
         public FontTemplate(string name)
@@ -24,6 +42,10 @@ namespace FontGenerator
             this.Size = 10;
         }
 
+        /// <summary>
+        /// Creates a usable font for the GDI+-Renderer from this template
+        /// </summary>
+        /// <returns>GDI+-Font for rendering</returns>
         public Font CreateFont()
         {
             FontStyle style = Bold ? FontStyle.Bold : FontStyle.Regular;
