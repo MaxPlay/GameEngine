@@ -14,7 +14,7 @@ namespace GameEngine.Assets
     {
         Dictionary<char, Texture2D> characters;
 
-        public Dictionary<char, Texture2D> chars { get { return characters; } }
+        public Texture2D this[char character] { get { if (this.characters.ContainsKey(character)) return characters[character]; return new Texture2D(Bootstrap.graphics.GraphicsDevice, 1, 1); } }
 
         public Font(string name, string filename)
             : base(name, filename)

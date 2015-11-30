@@ -61,12 +61,11 @@ namespace GameEngine.Core
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new EngineSpriteBatch(GraphicsDevice);
 
-            test = Content.Load<Texture2D>("yellowbox");
-            map = new ImageMap("cucumber", "Cucumber.png");
+            /*map = new ImageMap("cucumber", "Cucumber.png");
             map.Load();
             audio = new AudioFile("audio", "test.ogg");
             audio.Load();
-
+            
             AudioSource source = new AudioSource(n);
             source.Active = true;
             source.AddSound(audio);
@@ -75,7 +74,7 @@ namespace GameEngine.Core
 
             GameEngine.Components.Audio.AudioListener listener = new Components.Audio.AudioListener(m);
             listener.RegisterSource(source);
-
+            */
             font = new Font("Arial", "Arial");
         }
 
@@ -174,17 +173,7 @@ namespace GameEngine.Core
                 0
                 );*/
 
-            spriteBatch.Draw(
-                font.chars['f'],
-                Vector2.One * 20,
-                null,
-                Color.Red,
-                0,
-                Vector2.Zero,
-                1,
-                SpriteEffects.None,
-                0
-                );
+            spriteBatch.DrawText(font, "abcdefghijklmnopqrstuvwxyz", new Vector2(120, 200), Handle.TopLeft, Color.White);
 
             spriteBatch.End();
             base.Draw(gameTime);

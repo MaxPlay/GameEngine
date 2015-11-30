@@ -12,7 +12,7 @@ namespace FontGenerator
 
         public static void Main(string[] args)
         {
-            new Encoder(args);
+            new FontGenerator.Encoder(args);
         }
     }
 }

@@ -52,7 +52,9 @@ namespace FontGenerator
             style = Italic ? style | FontStyle.Italic : style;
             style = Underline ? style | FontStyle.Underline : style;
 
-            return new Font(Fontname, Size, FontStyle.Bold, GraphicsUnit.Pixel);
+            Font f = new Font(Fontname, Size, style, GraphicsUnit.Pixel);
+
+            return f;
         }
     }
 }
