@@ -130,7 +130,7 @@ namespace GameEngine.Core
         /// Flushes the sprite batch and restores the device state to how it was before
         /// Begin was called.
         /// </summary>
-        public new void End()
+        public void End()
         {
             if (active)
                 base.End();
@@ -146,7 +146,7 @@ namespace GameEngine.Core
         /// <param name="destinationRectangle">A rectangle that specifies (in screen coordinates) the destination for drawing
         ///     the sprite.</param>
         /// <param name="color">The color to tint a sprite. Use Color.White for full color with no tinting.</param>
-        public new void Draw(Texture2D texture, Rectangle destinationRectangle, Color color, bool UI = true)
+        public void Draw(Texture2D texture, Rectangle destinationRectangle, Color color, bool UI = false)
         {
             if (active)
             {
@@ -165,7 +165,7 @@ namespace GameEngine.Core
         /// <param name="texture">A texture.</param>
         /// <param name="position">The location (in screen coordinates) to draw the sprite.</param>
         /// <param name="color">The color to tint a sprite. Use Color.White for full color with no tinting.</param>
-        public new void Draw(Texture2D texture, Vector2 position, Color color, bool UI = true)
+        public void Draw(Texture2D texture, Vector2 position, Color color, bool UI = false)
         {
             if (active)
             {
@@ -188,7 +188,7 @@ namespace GameEngine.Core
         /// <param name="sourceRectangle">A rectangle that specifies (in texels) the source texels from a texture.
         ///     Use null to draw the entire texture.</param>
         /// <param name="color">The color to tint a sprite. Use Color.White for full color with no tinting.</param>
-        public new void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle? sourceRectangle, Color color, bool UI = true)
+        public void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle? sourceRectangle, Color color, bool UI = false)
         {
             if (active)
             {
@@ -209,7 +209,7 @@ namespace GameEngine.Core
         /// <param name="sourceRectangle">A rectangle that specifies (in texels) the source texels from a texture.
         ///     Use null to draw the entire texture.</param>
         /// <param name="color">The color to tint a sprite. Use Color.White for full color with no tinting.</param>
-        public new void Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, bool UI = true)
+        public void Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, bool UI = false)
         {
             if (active)
             {
@@ -239,7 +239,7 @@ namespace GameEngine.Core
         /// <param name="layerDepth">The depth of a layer. By default, 0 represents the front layer and 1 represents
         ///     a back layer. Use SpriteSortMode if you want sprites to be sorted during
         ///     drawing.</param>
-        public new void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, SpriteEffects effects, float layerDepth, bool UI = true)
+        public void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, SpriteEffects effects, float layerDepth, bool UI = false)
         {
             if (active)
             {
@@ -268,7 +268,7 @@ namespace GameEngine.Core
         /// <param name="layerDepth">The depth of a layer. By default, 0 represents the front layer and 1 represents
         ///     a back layer. Use SpriteSortMode if you want sprites to be sorted during
         ///     drawing.</param>
-        public new void Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, float scale, SpriteEffects effects, float layerDepth, bool UI = true)
+        public void Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, float scale, SpriteEffects effects, float layerDepth, bool UI = false)
         {
             if (active)
             {
@@ -297,7 +297,7 @@ namespace GameEngine.Core
         /// <param name="layerDepth">The depth of a layer. By default, 0 represents the front layer and 1 represents
         ///     a back layer. Use SpriteSortMode if you want sprites to be sorted during
         ///     drawing.</param>
-        public new void Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects, float layerDepth, bool UI = true)
+        public void Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects, float layerDepth, bool UI = false)
         {
             if (active)
             {

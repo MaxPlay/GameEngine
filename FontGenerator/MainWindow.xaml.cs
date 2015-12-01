@@ -50,13 +50,14 @@ namespace FontGenerator
             args.Add((string)combFonts.SelectedValue);
             args.Add("-s");
             args.Add((combSize.SelectedIndex + 1).ToString());
+            args.Add("-c");
+            args.Add(tbCharacters.Text);
             if (tbPreview.FontWeight == FontWeights.Bold)
                 args.Add("-b");
             if (tbPreview.FontStyle == FontStyles.Italic)
                 args.Add("-i");
             if (tbPreview.TextDecorations == TextDecorations.Underline)
                 args.Add("-u");
-
 
             GameEngine.Font.Encoder enc = new GameEngine.Font.Encoder(args.ToArray());
         }

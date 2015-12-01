@@ -1,7 +1,7 @@
 ﻿<Window x:Class="FontGenerator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Font Generator" Height="183.2" Width="515.6" ResizeMode="CanMinimize">
+        Title="Font Generator" Height="193.2" Width="522.6" ResizeMode="CanMinimize">
     <Grid>
         <TextBox x:Name="tbCharacters" HorizontalAlignment="Left" Height="23" Margin="10,98,0,0" VerticalAlignment="Top" Width="201" ToolTip="The characters that should be included in the font (doubles will be removed)." MaxLines="1"/>
         <Label Content="Characters" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top"/>
