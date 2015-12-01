@@ -10,12 +10,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace FontGenerator
+namespace GameEngine.Font
 {
     /// <summary>
     /// Converts regular registered font to a gameengine-font-file.
     /// </summary>
-    public class Encoder
+    public sealed class Encoder
     {
         string chars;
         Dictionary<char, Bitmap> charGraphics;
@@ -132,10 +132,13 @@ namespace FontGenerator
         /// <param name="character">The character to encode.</param>
         private void CreateSpriteFont(FontTemplate template, char character)
         {
+            if (charGraphics.ContainsKey(character))
+                return;
+
             Bitmap objBmpImage = new Bitmap(1, 1);
 
             // Create the Font object for the image text drawing.
-            Font objFont = template.CreateFont();
+            System.Drawing.Font objFont = template.CreateFont();
 
             // Create a graphics object to measure the text's width and height.
             Graphics objGraphics = Graphics.FromImage(objBmpImage);

@@ -1,6 +1,4 @@
-﻿using GameEngine.Core;
-using GameEngine.Exception;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,11 +12,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Color = Microsoft.Xna.Framework.Color;
 
-namespace GameEngine.Pipeline
+namespace GameEngine.Font
 {
-    public sealed class FontDecoder
+    public sealed class Decoder
     {
-        public FontDecoder()
+        public Decoder()
         {
 
         }
@@ -27,7 +25,7 @@ namespace GameEngine.Pipeline
         /// </summary>
         /// <param name="reader">BinaryReader of the active GEF-File</param>
         /// <returns>Dictionary of the chars and the textures.</returns>
-        public Dictionary<char, Texture2D> Convert(BinaryReader reader)
+        public Dictionary<char, Texture2D> Convert(BinaryReader reader, GraphicsDevice device)
         {
             Dictionary<char, Texture2D> fontdictionary = new Dictionary<char, Texture2D>();
 
@@ -89,10 +87,10 @@ namespace GameEngine.Pipeline
                     //an exception.
                     string md5Check = reader.ReadString();
                     if (!md5Hash.Equals(md5Check))
-                        throw new CorruptedFileException("File of type Font is corrupted. Error testing the checksum of a character.");
+                        throw new CorruptedFontFileException("File of type Font is corrupted. Error testing the checksum of a character.");
                     
                     //Generate texture from bitmap
-                    Texture2D tex = GetTexture2DFromBitmap(bitmap);
+                    Texture2D tex = GetTexture2DFromBitmap(bitmap, device);
 
                     //and add it to the dictionary.
                     fontdictionary.Add(currentChar, tex);
@@ -102,9 +100,15 @@ namespace GameEngine.Pipeline
             return fontdictionary;
         }
 
-        private Texture2D GetTexture2DFromBitmap(Bitmap bitmap)
+        /// <summary>
+        /// Takes a GDI+ Bitmap and turns it into an XNA-Texture2D.
+        /// </summary>
+        /// <param name="bitmap">The bitmap to convert.</param>
+        /// <param name="device">The GraphicsDevice we want to decode to.</param>
+        /// <returns></returns>
+        private Texture2D GetTexture2DFromBitmap(Bitmap bitmap, GraphicsDevice device)
         {
-            Texture2D tex = new Texture2D(Bootstrap.graphics.GraphicsDevice, bitmap.Width, bitmap.Height, false, SurfaceFormat.Color);
+            Texture2D tex = new Texture2D(device, bitmap.Width, bitmap.Height, false, SurfaceFormat.Color);
 
             BitmapData data = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, bitmap.PixelFormat);
 

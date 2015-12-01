@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FontGenerator
+namespace GameEngine.Font
 {
     /// <summary>
     /// The template for the fontencoder to generate the files.
     /// </summary>
-    class FontTemplate
+    internal class FontTemplate
     {
         /// <summary>
         /// The name of the font
@@ -46,13 +46,13 @@ namespace FontGenerator
         /// Creates a usable font for the GDI+-Renderer from this template
         /// </summary>
         /// <returns>GDI+-Font for rendering</returns>
-        public Font CreateFont()
+        public System.Drawing.Font CreateFont()
         {
             FontStyle style = Bold ? FontStyle.Bold : FontStyle.Regular;
             style = Italic ? style | FontStyle.Italic : style;
             style = Underline ? style | FontStyle.Underline : style;
 
-            Font f = new Font(Fontname, Size, style, GraphicsUnit.Pixel);
+            System.Drawing.Font f = new System.Drawing.Font(Fontname, Size, style, GraphicsUnit.Pixel);
 
             return f;
         }

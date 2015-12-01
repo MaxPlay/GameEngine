@@ -26,7 +26,7 @@ namespace GameEngine.Core
         Texture2D test;
         ImageMap map;
         AudioFile audio;
-        Font font;
+        Assets.Font font;
 
         public Bootstrap()
         {
@@ -75,7 +75,7 @@ namespace GameEngine.Core
             GameEngine.Components.Audio.AudioListener listener = new Components.Audio.AudioListener(m);
             listener.RegisterSource(source);
             */
-            font = new Font("Arial", "Arial");
+            font = new Assets.Font("Arial", "Arial");
         }
 
         /// <summary>

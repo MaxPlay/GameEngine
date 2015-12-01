@@ -310,7 +310,7 @@ namespace GameEngine.Core
             }
         }
 
-        public void DrawText(Font font, string text, Vector2 position, Handle relativeHandle, Color color, bool UI = true)
+        public void DrawText(Assets.Font font, string text, Vector2 position, Handle relativeHandle, Color color, bool UI = true)
         {
             if (active)
             {

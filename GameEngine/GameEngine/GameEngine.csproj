@@ -69,6 +69,9 @@
     <Reference Include="Box2D">
       <HintPath>..\..\Lib\Box2D.dll</HintPath>
     </Reference>
+    <Reference Include="GameEngine.Font">
+      <HintPath>..\..\GameEngine.Font\bin\Release\GameEngine.Font.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Avatar, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
@@ -129,7 +132,6 @@
     <Compile Include="Core\Space.cs" />
     <Compile Include="Exception\FileNotSupportedException.cs" />
     <Compile Include="Extension\ArrayExtension.cs" />
-    <Compile Include="Pipeline\FontDecoder.cs" />
     <Compile Include="Pipeline\ImporterContext.cs" />
     <Compile Include="Pipeline\LevelLoader.cs" />
     <Compile Include="Pipeline\Logger.cs" />
