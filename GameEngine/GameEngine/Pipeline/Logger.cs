@@ -8,6 +8,11 @@ namespace GameEngine.Pipeline
 {
     class Logger : ContentBuildLogger
     {
+        public Logger()
+            : base()
+        {
+
+        }
 
         public override void LogImportantMessage(string message, params object[] messageArgs)
         {

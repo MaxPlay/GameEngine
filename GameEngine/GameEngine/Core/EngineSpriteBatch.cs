@@ -90,14 +90,14 @@ namespace GameEngine.Core
         /// <param name="depthStencilState">Depth and stencil options.</param>
         /// <param name="rasterizerState">Rasterization options.</param>
         /// <param name="effect">Effect state options.</param>
-        public new void Begin(SpriteSortMode sortMode, BlendState blendState, SamplerState samplerState, DepthStencilState depthStencilState, RasterizerState rasterizerState, Effect effect)
+        public void Begin(SpriteSortMode sortMode, BlendState blendState, SamplerState samplerState, DepthStencilState depthStencilState, RasterizerState rasterizerState, Shader shader)
         {
             if (Camera.main == null)
                 return;
 
             if (!active)
             {
-                base.Begin(sortMode, blendState, samplerState, depthStencilState, rasterizerState, effect, Camera.main.TransformMatrix);
+                base.Begin(sortMode, blendState, samplerState, depthStencilState, rasterizerState, shader.CompiledHLSL_Shader, Camera.main.TransformMatrix);
                 active = true;
             }
         }
@@ -109,28 +109,28 @@ namespace GameEngine.Core
         ///    SamplerState.LinearClamp). Passing a null effect selects the default SpriteBatch
         ///    Class shader.
         /// </summary>
-        /// <param name="effect">Effect state options.</param>
-        public void Begin(Effect effect)
+        /// <param name="shader">Shader state options.</param>
+        public void Begin(Shader shader)
         {
             if (Camera.main == null)
                 return;
 
             if (!active)
             {
-                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, effect, Camera.main.TransformMatrix);
+                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, shader.CompiledHLSL_Shader, Camera.main.TransformMatrix);
                 active = true;
             }
             else
             {
                 base.End();
-                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, effect, Camera.main.TransformMatrix);
+                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, shader.CompiledHLSL_Shader, Camera.main.TransformMatrix);
             }
         }
         /// <summary>
         /// Flushes the sprite batch and restores the device state to how it was before
         /// Begin was called.
         /// </summary>
-        public void End()
+        public new void End()
         {
             if (active)
                 base.End();

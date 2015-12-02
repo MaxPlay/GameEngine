@@ -43,6 +43,7 @@ namespace GameEngine.Components.Audio
             this.active = true;
             this.volume = 1;
             this.Looped = false;
+            this.sourceType = AudioChannels.Stereo;
         }
 
         public void AddSound(AudioFile audiofile)

@@ -9,25 +9,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace GameEngine.Assets
 {
     class Material : Asset
     {
-        public Effect Shader;
+        public Shader Shader;
 
         public Material(string name, string filename)
             : base(name, filename)
         {
-
+            Load();
         }
 
         public override void Load()
         {
-            using (FileStream stream = new FileStream("Materials/" + this.Filename, FileMode.Open))
+            using (XmlReader reader = XmlReader.Create(File.Open("Materials/" + this.Filename, FileMode.Open)))
             {
-
-                stream.Close();
+                
             }
         }
     }

@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 using GameEngine.Assets;
 using GameEngine.Components.Audio;
 using GameEngine.Components.Rendering;
+using GameEngine.Components.UI;
 
 namespace GameEngine.Core
 {
@@ -23,9 +24,9 @@ namespace GameEngine.Core
         public static GraphicsDeviceManager graphics;
         public static EngineSpriteBatch spriteBatch;
         GameObject m, n;
-        Texture2D test;
+        /*Texture2D test;
         ImageMap map;
-        AudioFile audio;
+        AudioFile audio;*/
         Assets.Font font;
 
         public Bootstrap()
@@ -48,6 +49,7 @@ namespace GameEngine.Core
             n = new GameObject();
             n.Transform.Position = Vector2.One * 10;
             m.AddComponent<Camera>();
+            
 
             base.Initialize();
         }
@@ -145,9 +147,7 @@ namespace GameEngine.Core
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
                 m.Transform.Translate(Vector2.UnitY, Space.Local);
-
-            Console.WriteLine(m.GetComponent<Camera>().ToString());
-
+            
             base.Update(gameTime);
         }
 
@@ -159,7 +159,7 @@ namespace GameEngine.Core
         {
             GraphicsDevice.Clear(Camera.main != null ? Camera.main.BackgroundColor : Color.Black);
 
-            spriteBatch.Begin(null);
+            spriteBatch.Begin();
 
             /*spriteBatch.Draw(
                 map.Texture,
@@ -173,7 +173,7 @@ namespace GameEngine.Core
                 0
                 );*/
 
-            spriteBatch.DrawText(font, "abcdefghijklmnopqrstuvwxyz", new Vector2(120, 200), Handle.TopLeft, Color.White);
+            spriteBatch.DrawText(font, "abcdefghijklmnopqrstuvwxyz", new Vector2(120, 200), Handle.TopLeft, Color.White, false);
 
             spriteBatch.End();
             base.Draw(gameTime);

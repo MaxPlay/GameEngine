@@ -10,6 +10,12 @@ namespace GameEngine.Pipeline
     {
         ContentBuildLogger logger;
 
+        public ImporterContext()
+            : base()
+        {
+            logger = new Logger();
+        }
+
         public override void AddDependency(string filename)
         {
 

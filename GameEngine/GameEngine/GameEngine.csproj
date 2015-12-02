@@ -109,6 +109,7 @@
     <Compile Include="Assets\Image.cs" />
     <Compile Include="Assets\ImageMap.cs" />
     <Compile Include="Assets\Material.cs" />
+    <Compile Include="Assets\Shader.cs" />
     <Compile Include="Attributes\RequireComponent.cs" />
     <Compile Include="Attributes\SingleInstanceComponent.cs" />
     <Compile Include="Components\Audio\AudioListener.cs" />

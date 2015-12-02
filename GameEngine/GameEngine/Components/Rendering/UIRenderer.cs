@@ -12,7 +12,9 @@ namespace GameEngine.Components.Rendering
     {
         Image baseImage;
 
-        public Image BaseImage { get { return baseImage; } }
+        public Image BaseImage { get { return baseImage; } set { baseImage = value; if (UpdatedBaseImage != null) UpdatedBaseImage(this, new EventArgs()); } }
+
+        public event EventHandler UpdatedBaseImage;
 
         public UIRenderer()
             : base(null)
@@ -28,12 +30,12 @@ namespace GameEngine.Components.Rendering
 
         public override void Reset()
         {
-            throw new NotImplementedException();
+            baseImage = null;
         }
 
         public override void Draw(Matrix TransformMatrix)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
