@@ -1,6 +1,7 @@
 ﻿using GameEngine.Components.Audio;
 using GameEngine.Components.Rendering;
 using GameEngine.Core;
+using GameEngine.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,10 +48,7 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (FileStream stream = new FileStream("Levels/" + filename, FileMode.Open))
-            {
-
-            }
+            LevelLoader.LoadFromFile("Level/" + filename);
         }
 
         public bool RegisterRenderer(BaseRenderer renderer)

@@ -52,13 +52,25 @@ namespace GameEngine.Components.UI
 
         private void MouseInput_DoubleClick(MouseEventArgs e)
         {
-            if (hover && DoubleClicked != null)
+            if (hover)
+                OnDoubleClicked();
+        }
+
+        protected void OnDoubleClicked()
+        {
+            if (DoubleClicked != null)
                 DoubleClicked(this, new EventArgs());
         }
 
         private void MouseInput_Left(MouseEventArgs e)
         {
-            if (hover && Clicked != null)
+            if (hover)
+                OnClicked();
+        }
+
+        protected void OnClicked()
+        {
+            if (Clicked != null)
                 Clicked(this, new EventArgs());
         }
 
@@ -68,20 +80,32 @@ namespace GameEngine.Components.UI
                 if (this.hover)
                 {
                     this.hover = false;
-                    if (MouseOut != null)
-                        MouseOut(this, new EventArgs());
+                    OnMouseOut();
                 }
                 else
                 {
                     this.hover = true;
-                    if (MouseIn != null)
-                        MouseIn(this, new EventArgs());
+                    OnMouseIn();
                 }
+        }
+
+        protected void OnMouseIn()
+        {
+            if (MouseIn != null)
+                MouseIn(this, new EventArgs());
+        }
+
+        protected void OnMouseOut()
+        {
+            if (MouseOut != null)
+                MouseOut(this, new EventArgs());
         }
 
         public override void Reset()
         {
-            throw new NotImplementedException();
+            if (hover)
+                OnMouseOut();
+            hover = false;
         }
     }
 }

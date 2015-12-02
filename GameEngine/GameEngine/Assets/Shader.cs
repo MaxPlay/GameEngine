@@ -22,9 +22,8 @@ namespace GameEngine.Assets
         public Shader(string name, string filename)
             : base(name, filename)
         {
-
+            Load();
         }
-
 
         public override void Load()
         {
