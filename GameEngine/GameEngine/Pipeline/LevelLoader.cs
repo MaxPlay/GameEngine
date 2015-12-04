@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GameEngine.Pipeline
@@ -25,17 +26,24 @@ namespace GameEngine.Pipeline
     {
         public static List<GameObject> unloadedGameObjects;
         private static Task loadingTask;
+        private static Task generateTask;
         private static byte[] LevelContent;
+        private static Thread generatorThread;
 
         public delegate void LevelEventHandler(LevelEventArgs e);
 
         public static event LevelEventHandler LevelLoadBegin;
         public static event LevelEventHandler LevelLoadFinished;
 
+        static LevelLoader()
+        {
+            generatorThread = new Thread(GenerateLevel);
+        }
+
         public static void LoadFromFile(string Filename)
         {
             loadingTask = LoadLevelAsync(Filename);
-            Task.Factory.ContinueWhenAll(new Task[] { loadingTask }, _ => GenerateLevelAsync());
+            Task.Factory.ContinueWhenAll(new Task[] { loadingTask }, _ => InitializeLevelGeneration());
         }
 
         private static async Task LoadLevelAsync(string Filename)
@@ -48,7 +56,12 @@ namespace GameEngine.Pipeline
             };
         }
 
-        private static async Task GenerateLevelAsync()
+        private static void InitializeLevelGeneration()
+        {
+            generatorThread.Start();
+        }
+
+        private static void GenerateLevel()
         {
             using (MemoryStream stream = new MemoryStream(LevelContent))
             {

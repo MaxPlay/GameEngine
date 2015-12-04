@@ -142,6 +142,7 @@
     <Compile Include="Core\Bootstrap.cs" />
     <Compile Include="Components\Transform.cs" />
     <Compile Include="Components\UI\Button.cs" />
+    <Compile Include="Utility\AStar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
