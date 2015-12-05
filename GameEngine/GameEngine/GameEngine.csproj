@@ -116,6 +116,9 @@
     <Compile Include="Components\Audio\AudioSource.cs" />
     <Compile Include="Components\Rendering\BaseRenderer.cs" />
     <Compile Include="Components\Rendering\Camera.cs" />
+    <Compile Include="Core\Debug.cs" />
+    <Compile Include="Core\DebugSettings.cs" />
+    <Compile Include="Core\DeveloperConsole.cs" />
     <Compile Include="Exception\CorruptedFileException.cs" />
     <Compile Include="Exception\LevelNotSetException.cs" />
     <Compile Include="Components\Rendering\Renderer.cs" />

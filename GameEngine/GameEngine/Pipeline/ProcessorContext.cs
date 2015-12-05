@@ -9,7 +9,7 @@ namespace GameEngine.Pipeline
 {
     class ProcessorContext : ContentProcessorContext
     {
-        private Logger logger;
+        private CBLogger logger;
         private OpaqueDataDictionary parameters;
 
         public override void AddDependency(string filename)
@@ -80,7 +80,7 @@ namespace GameEngine.Pipeline
         public ProcessorContext()
             : base()
         {
-            this.logger = new Logger();
+            this.logger = new CBLogger();
             this.parameters = new OpaqueDataDictionary();
         }
     }

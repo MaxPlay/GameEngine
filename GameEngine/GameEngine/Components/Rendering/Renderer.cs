@@ -33,7 +33,9 @@ namespace GameEngine.Components.Rendering
 
         public override void Reset()
         {
-            throw new NotImplementedException();
+            texture = null;
+            Material = null;
+            isAnimated = false;
         }
 
         public override void Draw(Matrix TransformMatrix)
@@ -51,7 +53,6 @@ namespace GameEngine.Components.Rendering
                     SpriteEffects.None,
                     0
                     );
-
         }
     }
 }

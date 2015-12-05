@@ -13,7 +13,7 @@ namespace GameEngine.Pipeline
         public ImporterContext()
             : base()
         {
-            logger = new Logger();
+            logger = new CBLogger();
         }
 
         public override void AddDependency(string filename)
