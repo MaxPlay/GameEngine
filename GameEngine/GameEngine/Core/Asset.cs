@@ -13,8 +13,8 @@ namespace GameEngine.Core
         protected string filename;
         public long AssetID { get; private set; }
         
-        protected string Name { get { return name; } }
-        protected string Filename { get { return filename; } }
+        public string Name { get { return name; } }
+        public string Filename { get { return filename; } }
 
         public Asset(string name, string filename)
         {

@@ -24,7 +24,7 @@ namespace GameEngine.Components
         /// <summary>
         /// The position of the Transform, ignoring the offset of the parent.
         /// </summary>
-        public Vector2 LocalPosition { get { return this.position; } set { this.position = value; } }
+        public Vector2 LocalPosition { get { return this.position * Settings.Unit; } set { this.position = value / Settings.Unit; } }
         /// <summary>
         /// The position of the Transform.
         /// </summary>
@@ -34,14 +34,14 @@ namespace GameEngine.Components
             {
                 if (parent != null)
                     return new Vector2(
-                        parent.CosineOfRotation * position.X - parent.SineOfRotation * position.Y,
-                        parent.SineOfRotation * position.X + parent.CosineOfRotation * position.Y
-                        ) + parent.position;
-                return this.position;
+                        parent.CosineOfRotation * LocalPosition.X - parent.SineOfRotation * LocalPosition.Y,
+                        parent.SineOfRotation * LocalPosition.X + parent.CosineOfRotation * LocalPosition.Y
+                        ) + parent.Position;
+                return this.LocalPosition;
             }
             set
             {
-                this.position = value;
+                this.LocalPosition = value;
             }
         }
 

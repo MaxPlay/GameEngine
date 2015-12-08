@@ -12,6 +12,7 @@ namespace GameEngine.Components.Rendering
 {
     abstract class BaseRenderer : Component
     {
+        protected Material material;
 
         private bool isRendering;
         public bool IsRendering { get { return this.isRendering; } set { this.isRendering = value; this.registerRenderer(value); } }

@@ -27,7 +27,10 @@ namespace GameEngine.Assets
         {
             using (XmlReader reader = XmlReader.Create(File.Open("Materials/" + this.Filename, FileMode.Open)))
             {
-                
+                while (reader.Read())
+                {
+
+                }
             }
         }
     }

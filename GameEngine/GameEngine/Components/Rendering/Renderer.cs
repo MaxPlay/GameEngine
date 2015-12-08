@@ -12,7 +12,7 @@ namespace GameEngine.Components.Rendering
 {
     class Renderer : BaseRenderer
     {
-        public Material Material;
+        public Material Material { get { return this.material; } set { this.material = value; } }
         protected Image texture;
         protected bool isAnimated;
 
@@ -40,7 +40,7 @@ namespace GameEngine.Components.Rendering
 
         public override void Draw(Matrix TransformMatrix)
         {
-            Bootstrap.spriteBatch.Begin(Material.Shader);
+            Bootstrap.spriteBatch.Begin(material.Shader);
             if (!isAnimated)
                 Bootstrap.spriteBatch.Draw(
                     Texture.Texture,

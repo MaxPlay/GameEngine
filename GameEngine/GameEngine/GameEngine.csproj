@@ -114,11 +114,13 @@
     <Compile Include="Attributes\SingleInstanceComponent.cs" />
     <Compile Include="Components\Audio\AudioListener.cs" />
     <Compile Include="Components\Audio\AudioSource.cs" />
+    <Compile Include="Components\Physics\Rigidbody.cs" />
     <Compile Include="Components\Rendering\BaseRenderer.cs" />
     <Compile Include="Components\Rendering\Camera.cs" />
     <Compile Include="Core\Debug.cs" />
     <Compile Include="Core\DebugSettings.cs" />
     <Compile Include="Core\DeveloperConsole.cs" />
+    <Compile Include="Core\Settings.cs" />
     <Compile Include="Exception\CorruptedFileException.cs" />
     <Compile Include="Exception\LevelNotSetException.cs" />
     <Compile Include="Components\Rendering\Renderer.cs" />
@@ -182,7 +184,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Components\Physics\" />
     <Folder Include="Components\Utility\" />
   </ItemGroup>
   <ItemGroup>
