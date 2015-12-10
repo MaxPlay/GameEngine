@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace Pathfinding
 {
-    public class AStar
+    public abstract class AStar
     {
+        protected AStar()
+        {
 
+        }
+
+        public static AStar Create()
+        {
+            return new BoolAStar();
+        }
     }
 }

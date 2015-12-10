@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AStar.cs" />
+    <Compile Include="BoolAStar.cs" />
+    <Compile Include="ByteAStar.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
