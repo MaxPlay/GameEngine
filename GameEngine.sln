@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine.Font", "GameEngi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontGenerator", "FontGenerator\FontGenerator.csproj", "{046BDFD6-EC39-4563-99A4-FC18BC8E1C0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinding", "Pathfinding\Pathfinding.csproj", "{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,18 @@ Global
 		{046BDFD6-EC39-4563-99A4-FC18BC8E1C0F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{046BDFD6-EC39-4563-99A4-FC18BC8E1C0F}.Release|Win32.ActiveCfg = Release|Any CPU
 		{046BDFD6-EC39-4563-99A4-FC18BC8E1C0F}.Release|x86.ActiveCfg = Release|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Release|Win32.ActiveCfg = Release|Any CPU
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
