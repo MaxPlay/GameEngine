@@ -10,7 +10,7 @@ namespace Pathfinding
     /// <summary>
     /// The way the distance is calculated.
     /// </summary>
-    internal enum DistanceType
+    public enum DistanceType
     {
         Octile,
         Chebyshev,
@@ -20,7 +20,7 @@ namespace Pathfinding
     /// <summary>
     /// Represents a node in the nodegraph.
     /// </summary>
-    internal class Node
+    public class Node
     {
         private Point location;
         private byte cost;
@@ -77,7 +77,11 @@ namespace Pathfinding
                     break;
             }
         }
-
+        /// <summary>
+        /// Calculates the octile heuristic value between the given target and the node that called this method.
+        /// </summary>
+        /// <param name="target">The target point we want to calculate the the heuristic with.</param>
+        /// <returns>The octile heuristic value.</returns>
         private float OHeuristic(Point target)
         {
             int dx = Math.Abs(this.location.X - target.X);
@@ -87,6 +91,11 @@ namespace Pathfinding
             return cost * (dx + dy) + (D2 - 2 * cost) * Math.Min(dx, dy);
         }
 
+        /// <summary>
+        /// Calculates the manhattan heuristic value between the given target and the node that called this method.
+        /// </summary>
+        /// <param name="target">The target point we want to calculate the the heuristic with.</param>
+        /// <returns>The manhattan heuristic value.</returns>
         private float MHeuristic(Point target)
         {
             int dx = Math.Abs(this.location.X - target.X);
@@ -95,6 +104,11 @@ namespace Pathfinding
             return cost * (dx + dy);
         }
 
+        /// <summary>
+        /// Calculates the chebyshev heuristic value between the given target and the node that called this method.
+        /// </summary>
+        /// <param name="target">The target point we want to calculate the the heuristic with.</param>
+        /// <returns>The chebyshev heuristic value.</returns>
         private float CHeuristic(Point target)
         {
             int dx = Math.Abs(this.location.X - target.X);
