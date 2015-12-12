@@ -16,15 +16,15 @@ namespace Pathfinding
             CreateMap(ref byteArray);
         }
 
-
-        public override bool CheckPath()
-        {
-            throw new NotImplementedException();
-        }
-
         public override List<Point> Search()
         {
-            throw new NotImplementedException();
+            List<Point> OpenList = new List<Point>();
+            List<Point> ClosedList = new List<Point>();
+
+            Node currentNode = map[start.X, start.Y];
+            OpenList.Add(currentNode.Location);
+
+            return ClosedList;
         }
 
         protected override void CreateMap(ref byte[,] byteArray)

@@ -40,7 +40,10 @@ namespace Pathfinding
                 return Create(ref byteArray, start, end, distanceType);
         }
 
-        public abstract bool CheckPath();
+        public bool CheckPath()
+        {
+            return (this.Search().Count != 0);
+        }
 
         public abstract List<Point> Search();
 
