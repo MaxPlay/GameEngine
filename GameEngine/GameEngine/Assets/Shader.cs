@@ -18,7 +18,8 @@ namespace GameEngine.Assets
         private Effect HLSL_Shader;
 
         public Effect CompiledHLSL_Shader { get { return this.HLSL_Shader; } }
-
+        
+        public Shader() : base(string.Empty, string.Empty) { }
         public Shader(string name, string filename)
             : base(name, filename)
         {
@@ -40,6 +41,11 @@ namespace GameEngine.Assets
 
                 HLSL_Shader = new Effect(Bootstrap.graphics.GraphicsDevice, compiledEffect.GetEffectCode());
             }
+        }
+
+        public static Asset Create(string filename, string name)
+        {
+            return Settings.AquireAsset<Shader>(filename, name);
         }
     }
 }

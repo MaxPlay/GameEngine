@@ -60,7 +60,8 @@ namespace GameEngine.Assets
                 }
             }
         }
-
+        
+        public Image() : base(string.Empty, string.Empty) { }
         public Image(string name, string filename)
             : base(name, filename)
         {
@@ -75,5 +76,10 @@ namespace GameEngine.Assets
             }
         }
 
+
+        public static Asset Create(string filename, string name)
+        {
+            return Settings.AquireAsset<Image>(filename, name);
+        }
     }
 }

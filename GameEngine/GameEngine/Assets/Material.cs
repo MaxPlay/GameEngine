@@ -17,6 +17,7 @@ namespace GameEngine.Assets
     {
         public Shader Shader;
 
+        public Material() : base(string.Empty, string.Empty) { }
         public Material(string name, string filename)
             : base(name, filename)
         {
@@ -32,6 +33,11 @@ namespace GameEngine.Assets
 
                 }
             }
+        }
+
+        public static Asset Create(string filename, string name)
+        {
+            return Settings.AquireAsset<Material>(filename, name);
         }
     }
 }

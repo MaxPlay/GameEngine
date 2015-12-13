@@ -16,6 +16,8 @@ namespace GameEngine.Assets
 
         public SoundEffect SoundEffect { get { return this.soundEffect; } }
 
+        public AudioFile() : base(string.Empty, string.Empty) { }
+
         public AudioFile(string name, string filename)
             : base(name, filename)
         {
@@ -78,6 +80,11 @@ namespace GameEngine.Assets
                 wav[7] = (byte)((actualLength >> 24) & 0xFF);
                 File.WriteAllBytes(filename, wav);
             }
+        }
+
+        public static Asset Create(string filename, string name)
+        {
+            return Settings.AquireAsset<AudioFile>(filename, name);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameEngine.Core;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +26,8 @@ namespace GameEngine.Assets
                     return subimages[index];
             }
         }
-
+        
+        public ImageMap() : base(string.Empty, string.Empty) { }
         public ImageMap(string name, string filename)
             : base(name, filename)
         {
@@ -83,6 +85,11 @@ namespace GameEngine.Assets
                 stream.Close();
             }
             base.Load();
+        }
+
+        public static Asset Create(string filename, string name)
+        {
+            return Settings.AquireAsset<ImageMap>(filename, name);
         }
     }
 }

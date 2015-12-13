@@ -156,6 +156,7 @@
     </Content>
     <Content Include="Resources\DefaultResources.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Resources\Locations.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

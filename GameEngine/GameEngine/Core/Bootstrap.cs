@@ -34,6 +34,8 @@ namespace GameEngine.Core
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             Debug.Initialize();
+            Settings.LoadLocations();
+            Settings.LoadDefaultAssets();
         }
 
         /// <summary>

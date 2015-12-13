@@ -65,7 +65,7 @@ namespace GameEngine.Core
             }
         }
 
-        public static void Log(string message, object[] messageArgs)
+        public static void Log(string message, params object[] messageArgs)
         {
             if (!Initialized)
                 return;
@@ -95,7 +95,7 @@ namespace GameEngine.Core
             }
         }
 
-        public static void LogError(string message, object[] messageArgs)
+        public static void LogError(string message, params object[] messageArgs)
         {
             if (!Initialized)
                 return;
@@ -125,7 +125,7 @@ namespace GameEngine.Core
             }
         }
 
-        public static void LogWarning(string message, object[] messageArgs)
+        public static void LogWarning(string message, params object[] messageArgs)
         {
             if (!Initialized)
                 return;
@@ -154,7 +154,7 @@ namespace GameEngine.Core
             }
         }
 
-        public static void LogImportant(string message, object[] messageArgs)
+        public static void LogImportant(string message, params object[] messageArgs)
         {
             if (!Initialized)
                 return;

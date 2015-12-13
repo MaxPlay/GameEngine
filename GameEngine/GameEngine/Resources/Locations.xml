@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Locations>
-  <Location name="fonts">Fonts</Location>
-  <Location name="levels">Levels</Location>
-  <Location name="materials">Materials</Location>
-  <Location name="shaders">Shaders</Location>
-  <Location name="sounds">Sounds</Location>
-  <Location name="textures">Textures</Location>
+  <Location type="Font">Fonts</Location>
+  <Location type="Level">Levels</Location>
+  <Location type="Material">Materials</Location>
+  <Location type="Shader">Shaders</Location>
+  <Location type="AudioFile">Sounds</Location>
+  <Location type="Image">Textures</Location>
+  <Location type="ImageMap">Textures</Location>
 </Locations>

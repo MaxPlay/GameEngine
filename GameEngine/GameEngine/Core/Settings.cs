@@ -1,16 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace GameEngine.Core
 {
+    /// <summary>
+    /// This static class is used to save all the assets and the current runtime settings in the memory.
+    /// </summary>
     public static class Settings
     {
         static Settings()
         {
             assets = new List<Asset>();
+            locations = new Dictionary<Type, string>();
+        }
+
+        /// <summary>
+        /// Returns the relative path for the requested assets.
+        /// </summary>
+        /// <param name="type">The requested type.</param>
+        /// <returns>Returns the entry for the given type, if the type is not registered, an empty string will be returned.</returns>
+        public static string GetLocation(Type type)
+        {
+            if (locations.ContainsKey(type))
+                return locations[type];
+            return string.Empty;
         }
 
         /// <summary>
@@ -33,6 +52,36 @@ namespace GameEngine.Core
         /// Don't forget that calling the method at regular runtime will probably result in reference errors.
         /// </summary>
         private static List<Asset> assets;
+
+        /// <summary>
+        /// The locations of the assettypes.
+        /// The autoloader of the engine will use these directories to load certain assettypes.
+        /// </summary>
+        private static Dictionary<Type, string> locations;
+
+        /// <summary>
+        /// Assigns a new location to the Assets. When this asset is loaded the loader will look into the given folder.
+        /// </summary>
+        /// <remarks>
+        /// Only classes derived from Asset can be added as type.
+        /// Types that are added again will be overwritten.
+        /// </remarks>
+        /// <typeparam name="T">The type the directory is assigned to.</typeparam>
+        /// <param name="location">The directory we want to assign.</param>
+        /// <returns>Is true when successfully assigned. Should anything go wrong the method will return false.</returns>
+        public static bool AssignLocation(Type type, string location)
+        {
+            if (!typeof(Asset).IsAssignableFrom(type))
+                return false;
+
+            if (locations.ContainsKey(type))
+            {
+                locations.Remove(type);
+            }
+
+            locations.Add(type, location);
+            return true;
+        }
 
         /// <summary>
         /// A readonly list of all the active assets.
@@ -71,6 +120,53 @@ namespace GameEngine.Core
                 return false;
 
             return assets.Remove(oldAsset);
+        }
+
+        /// <summary>
+        /// Loads the locations from the Locations.xml.
+        /// </summary>
+        public static void LoadLocations()
+        {
+            using (XmlReader reader = XmlReader.Create(File.OpenRead("Resources/Locations.xml")))
+            {
+                while (reader.Read())
+                {
+                    if (reader.Name == "Location" && reader.NodeType == XmlNodeType.Element)
+                    {
+                        Type t = Type.GetType("GameEngine.Assets." + reader.GetAttribute("type"));
+                        reader.Read();
+                        string s = reader.Value;
+                        AssignLocation(t, s);
+                    }
+                }
+            }
+        }
+
+        public static void LoadDefaultAssets()
+        {
+            using (XmlReader reader = XmlReader.Create(File.OpenRead("Resources/DefaultResources.xml")))
+            {
+                while (reader.Read())
+                {
+                    if (reader.Name == "Resource" && reader.NodeType == XmlNodeType.Element)
+                    {
+                        string name = reader.GetAttribute("name");
+                        string type = reader.GetAttribute("type");
+                        reader.Read();
+                        string file = reader.Value;
+
+                        Type requestedType = Type.GetType("GameEngine.Assets." + type);
+
+                        if (requestedType == null)
+                        {
+                            Debug.LogError("Requested Type '{0}' not found.", type);
+                            continue;
+                        }
+
+                        requestedType.GetMethod("Create").Invoke(null, new string[] { name, file });
+                    }
+                }
+            }
         }
     }
 }

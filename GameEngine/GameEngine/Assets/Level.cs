@@ -21,7 +21,8 @@ namespace GameEngine.Assets
         protected List<int> audioSourceIndices;
 
         public static Level main;
-
+        
+        public Level() : base(string.Empty, string.Empty) { }
         public Level(string name, string filename)
             : base(name, filename)
         {
@@ -62,6 +63,11 @@ namespace GameEngine.Assets
         public bool UnregisterRenderer(Renderer renderer)
         {
             return renderers.Remove(renderer);
+        }
+
+        public static Asset Create(string filename, string name)
+        {
+            return Settings.AquireAsset<Level>(filename, name);
         }
     }
 }
