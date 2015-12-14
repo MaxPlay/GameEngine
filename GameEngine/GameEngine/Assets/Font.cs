@@ -25,7 +25,7 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (BinaryReader reader = new BinaryReader(File.Open("Fonts/" + filename + ".gef", FileMode.Open)))
+            using (BinaryReader reader = new BinaryReader(File.Open(Settings.GetLocation(typeof(Font)) + filename, FileMode.Open)))
             {
                 GameEngine.Font.Decoder decoder = new GameEngine.Font.Decoder();
                 this.characters = decoder.Convert(reader, Bootstrap.graphics.GraphicsDevice);

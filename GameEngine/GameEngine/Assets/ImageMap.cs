@@ -36,7 +36,7 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (FileStream stream = new FileStream("Textures/" + this.filename + ".xml", FileMode.Open))
+            using (FileStream stream = new FileStream(Settings.GetLocation(typeof(ImageMap)) + this.filename + ".xml", FileMode.Open))
             {
                 XmlReader reader = XmlReader.Create(stream);
 

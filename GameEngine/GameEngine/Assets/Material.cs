@@ -26,7 +26,7 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (XmlReader reader = XmlReader.Create(File.Open("Materials/" + this.Filename, FileMode.Open)))
+            using (XmlReader reader = XmlReader.Create(File.Open(Settings.GetLocation(typeof(Material)) + this.Filename, FileMode.Open)))
             {
                 while (reader.Read())
                 {

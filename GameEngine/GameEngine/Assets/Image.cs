@@ -70,7 +70,7 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (FileStream stream = new FileStream("Textures/" + this.filename, FileMode.Open))
+            using (FileStream stream = new FileStream(Settings.GetLocation(typeof(Image)) + this.filename, FileMode.Open))
             {
                 texture = Texture2D.FromStream(Bootstrap.graphics.GraphicsDevice, stream);
             }

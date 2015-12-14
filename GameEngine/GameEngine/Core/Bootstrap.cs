@@ -33,9 +33,6 @@ namespace GameEngine.Core
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            Debug.Initialize();
-            Settings.LoadLocations();
-            Settings.LoadDefaultAssets();
         }
 
         /// <summary>
@@ -46,6 +43,10 @@ namespace GameEngine.Core
         /// </summary>
         protected override void Initialize()
         {
+            Debug.Initialize();
+            Settings.LoadLocations();
+            Settings.LoadDefaultAssets();
+
             // TODO: Add your initialization logic here
             m = new GameObject();
             n = new GameObject();
@@ -79,7 +80,7 @@ namespace GameEngine.Core
             GameEngine.Components.Audio.AudioListener listener = new Components.Audio.AudioListener(m);
             listener.RegisterSource(source);
             */
-            font = new Assets.Font("Arial", "Arial");
+            //font = new Assets.Font("Arial", "Arial");
         }
 
         /// <summary>

@@ -49,7 +49,7 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            LevelLoader.LoadFromFile("Level/" + filename);
+            LevelLoader.LoadFromFile(Settings.GetLocation(typeof(Level)) + filename);
         }
 
         public bool RegisterRenderer(BaseRenderer renderer)

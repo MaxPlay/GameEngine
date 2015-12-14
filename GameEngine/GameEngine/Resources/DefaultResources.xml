@@ -2,7 +2,7 @@
 <Resources>
   <Resource name="DefaultFont" type="Font">DefaultFont.gef</Resource>
   <Resource name="DefaultShader" type="Shader">DefaultShader.fx</Resource>
-  <Resource name="DefaultMaterial" type="Material">DefaultShader.mat</Resource>
+  <Resource name="DefaultMaterial" type="Material">DefaultMaterial.mat</Resource>
   <Resource name="DefaultTexture" type="Image">DefaultTexture.png</Resource>
   <Resource name="DefaultSound" type="AudioFile">ErrorSound.ogg</Resource>
 </Resources>

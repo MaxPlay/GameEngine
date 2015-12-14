@@ -28,7 +28,7 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (StreamReader reader = new StreamReader("Shaders/" + filename))
+            using (StreamReader reader = new StreamReader(Settings.GetLocation(typeof(Shader)) + filename))
             {
                 EffectContent effectSource = new EffectContent();
 

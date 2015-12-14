@@ -136,10 +136,18 @@ namespace GameEngine.Core
                         Type t = Type.GetType("GameEngine.Assets." + reader.GetAttribute("type"));
                         reader.Read();
                         string s = reader.Value;
+
+                        //I know adding strings with += is not good, because it creates a copy of the string in memory.
+                        //But I am completely fine with this here, because after all, we do this ONCE in the whole application.
+                        if (s[s.Length - 1] != '/')
+                            s += "/";
+                        
                         AssignLocation(t, s);
                     }
                 }
             }
+
+            GC.Collect();
         }
 
         public static void LoadDefaultAssets()
@@ -167,6 +175,8 @@ namespace GameEngine.Core
                     }
                 }
             }
+
+            GC.Collect();
         }
     }
 }

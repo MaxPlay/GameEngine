@@ -44,9 +44,11 @@ namespace GameEngine.Assets
 
         private void LoadWaveFromFile()
         {
-            _correctTheFileLength("Audio/" + this.filename);
+            string _filename = Settings.GetLocation(typeof(AudioFile)) + this.filename;
 
-            using (Stream stream = new FileStream("Audio/" + this.filename, FileMode.Open))
+            _correctTheFileLength(_filename);
+
+            using (Stream stream = new FileStream(_filename, FileMode.Open))
             {
                 soundEffect = SoundEffect.FromStream(stream);
             }
@@ -54,7 +56,7 @@ namespace GameEngine.Assets
 
         private void LoadOggFromFile()
         {
-            soundEffect = OggSharp.OggToWave.LoadOggAsSoundEffect("Audio/" + this.filename);
+            soundEffect = OggSharp.OggToWave.LoadOggAsSoundEffect(Settings.GetLocation(typeof(AudioFile)) + this.filename);
         }
 
         /// <summary>
