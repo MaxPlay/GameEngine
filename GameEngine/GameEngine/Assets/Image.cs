@@ -10,7 +10,7 @@ using System.Xml;
 
 namespace GameEngine.Assets
 {
-    class Image : Asset
+    public class Image : Asset
     {
         protected Texture2D texture;
         protected Handle handle;
@@ -60,19 +60,27 @@ namespace GameEngine.Assets
                 }
             }
         }
-        
+
         public Image() : base(string.Empty, string.Empty) { }
         public Image(string name, string filename)
             : base(name, filename)
         {
-
+            Load();
         }
 
         public override void Load()
         {
-            using (FileStream stream = new FileStream(Settings.GetLocation(typeof(Image)) + this.filename, FileMode.Open))
+            try
             {
-                texture = Texture2D.FromStream(Bootstrap.graphics.GraphicsDevice, stream);
+                using (FileStream stream = new FileStream(Settings.GetLocation(typeof(Image)) + this.filename, FileMode.Open))
+                {
+                    texture = Texture2D.FromStream(Bootstrap.graphics.GraphicsDevice, stream);
+                }
+                this.loaded = true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
             }
         }
 

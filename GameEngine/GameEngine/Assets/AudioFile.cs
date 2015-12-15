@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace GameEngine.Assets
 {
-    class AudioFile : Asset
+    public class AudioFile : Asset
     {
         SoundEffect soundEffect;
         string encodername;
@@ -23,6 +23,14 @@ namespace GameEngine.Assets
         {
             soundEffect = null;
             encodername = string.Empty;
+            try
+            {
+                Load();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
         }
 
         public override void Load()
@@ -48,15 +56,32 @@ namespace GameEngine.Assets
 
             _correctTheFileLength(_filename);
 
-            using (Stream stream = new FileStream(_filename, FileMode.Open))
+            try
             {
-                soundEffect = SoundEffect.FromStream(stream);
+                using (Stream stream = new FileStream(_filename, FileMode.Open))
+                {
+                    soundEffect = SoundEffect.FromStream(stream);
+                }
+                loaded = true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
             }
         }
 
         private void LoadOggFromFile()
         {
-            soundEffect = OggSharp.OggToWave.LoadOggAsSoundEffect(Settings.GetLocation(typeof(AudioFile)) + this.filename);
+            try
+            {
+                soundEffect = OggSharp.OggToWave.LoadOggAsSoundEffect(Settings.GetLocation(typeof(AudioFile)) + this.filename);
+                loaded = true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Source);
+                Debug.LogError(e.Message);
+            }
         }
 
         /// <summary>

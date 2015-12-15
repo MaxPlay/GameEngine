@@ -8,6 +8,7 @@ namespace GameEngine.Core
     public abstract class Asset
     {
         private static long AssetIDDepth;
+        protected bool loaded;
 
         protected string name;
         protected string filename;
@@ -15,6 +16,7 @@ namespace GameEngine.Core
         
         public string Name { get { return name; } }
         public string Filename { get { return filename; } }
+        public bool LoadingComplete { get { return loaded; } }
 
         public Asset(string name, string filename)
         {

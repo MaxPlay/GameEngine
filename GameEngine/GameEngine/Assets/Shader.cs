@@ -18,7 +18,7 @@ namespace GameEngine.Assets
         private Effect HLSL_Shader;
 
         public Effect CompiledHLSL_Shader { get { return this.HLSL_Shader; } }
-        
+
         public Shader() : base(string.Empty, string.Empty) { }
         public Shader(string name, string filename)
             : base(name, filename)
@@ -28,18 +28,26 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (StreamReader reader = new StreamReader(Settings.GetLocation(typeof(Shader)) + filename))
+            try
             {
-                EffectContent effectSource = new EffectContent();
+                using (StreamReader reader = new StreamReader(Settings.GetLocation(typeof(Shader)) + filename))
+                {
+                    EffectContent effectSource = new EffectContent();
 
-                effectSource.Name = name;
-                effectSource.Identity = new ContentIdentity(filename);
-                effectSource.EffectCode = reader.ReadToEnd();
+                    effectSource.Name = name;
+                    effectSource.Identity = new ContentIdentity(filename);
+                    effectSource.EffectCode = reader.ReadToEnd();
 
-                EffectProcessor processor = new EffectProcessor();
-                CompiledEffectContent compiledEffect = processor.Process(effectSource, new ProcessorContext());
+                    EffectProcessor processor = new EffectProcessor();
+                    CompiledEffectContent compiledEffect = processor.Process(effectSource, new ProcessorContext());
 
-                HLSL_Shader = new Effect(Bootstrap.graphics.GraphicsDevice, compiledEffect.GetEffectCode());
+                    HLSL_Shader = new Effect(Bootstrap.graphics.GraphicsDevice, compiledEffect.GetEffectCode());
+                }
+                this.loaded = true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
             }
         }
 

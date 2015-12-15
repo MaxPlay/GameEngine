@@ -13,7 +13,7 @@ using System.Xml;
 
 namespace GameEngine.Assets
 {
-    class Material : Asset
+    public class Material : Asset
     {
         public Shader Shader;
 
@@ -26,12 +26,20 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (XmlReader reader = XmlReader.Create(File.Open(Settings.GetLocation(typeof(Material)) + this.Filename, FileMode.Open)))
+            try
             {
-                while (reader.Read())
+                using (XmlReader reader = XmlReader.Create(File.Open(Settings.GetLocation(typeof(Material)) + this.Filename, FileMode.Open)))
                 {
+                    while (reader.Read())
+                    {
 
+                    }
                 }
+                loaded = true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
             }
         }
 

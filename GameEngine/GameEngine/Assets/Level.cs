@@ -21,7 +21,7 @@ namespace GameEngine.Assets
         protected List<int> audioSourceIndices;
 
         public static Level main;
-        
+
         public Level() : base(string.Empty, string.Empty) { }
         public Level(string name, string filename)
             : base(name, filename)
@@ -32,6 +32,7 @@ namespace GameEngine.Assets
 
             if (main == null)
                 main = this;
+            Load();
         }
 
         public void Update()
@@ -49,7 +50,14 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            LevelLoader.LoadFromFile(Settings.GetLocation(typeof(Level)) + filename);
+            try
+            {
+                LevelLoader.LoadFromFile(Settings.GetLocation(typeof(Level)) + filename);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
         }
 
         public bool RegisterRenderer(BaseRenderer renderer)

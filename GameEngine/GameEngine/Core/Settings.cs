@@ -20,6 +20,18 @@ namespace GameEngine.Core
             locations = new Dictionary<Type, string>();
         }
 
+        private static int defaultFont;
+        private static int defaultMaterial;
+        private static int defaultShader;
+        private static int defaultSound;
+        private static int defaultTexture;
+
+        public static Assets.Shader DefaultShader { get { return (Assets.Shader)assets[defaultShader]; } }
+        public static Assets.Font DefaultFont { get { return (Assets.Font)assets[defaultFont]; } }
+        public static Assets.Material DefaultMaterial { get { return (Assets.Material)assets[defaultMaterial]; } }
+        public static Assets.Image DefaultTexture { get { return (Assets.Image)assets[defaultTexture]; } }
+        public static Assets.AudioFile DefaultSound { get { return (Assets.AudioFile)assets[defaultSound]; } }
+
         /// <summary>
         /// Returns the relative path for the requested assets.
         /// </summary>
@@ -101,7 +113,15 @@ namespace GameEngine.Core
                 return assets.First(a => a.Filename.Equals(filename) && a.Name.Equals(name));
 
             Asset newAsset = (T)Activator.CreateInstance(typeof(T), name, filename);
+            if (!newAsset.LoadingComplete)
+            {
+                Debug.LogError("Asset load failed {0}.", name);
+                return null;
+            }
             assets.Add(newAsset);
+
+            if (Debug.settings.LogDepth >= 3)
+                Debug.Log("Asset loaded {0}.", name);
             return newAsset;
         }
 
@@ -141,7 +161,7 @@ namespace GameEngine.Core
                         //But I am completely fine with this here, because after all, we do this ONCE in the whole application.
                         if (s[s.Length - 1] != '/')
                             s += "/";
-                        
+
                         AssignLocation(t, s);
                     }
                 }
@@ -150,8 +170,10 @@ namespace GameEngine.Core
             GC.Collect();
         }
 
+
         public static void LoadDefaultAssets()
         {
+            int defaultAssetPosition = 0;
             using (XmlReader reader = XmlReader.Create(File.OpenRead("Resources/DefaultResources.xml")))
             {
                 while (reader.Read())
@@ -172,6 +194,25 @@ namespace GameEngine.Core
                         }
 
                         requestedType.GetMethod("Create").Invoke(null, new string[] { name, file });
+
+                        switch (type)
+                        {
+                            case "Font":
+                                defaultFont = defaultAssetPosition++;
+                                break;
+                            case "Shader":
+                                defaultShader = defaultAssetPosition++;
+                                break;
+                            case "Material":
+                                defaultMaterial = defaultAssetPosition++;
+                                break;
+                            case "Image":
+                                defaultTexture = defaultAssetPosition++;
+                                break;
+                            case "AudioFile":
+                                defaultSound = defaultAssetPosition++;
+                                break;
+                        }
                     }
                 }
             }

@@ -25,10 +25,18 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (BinaryReader reader = new BinaryReader(File.Open(Settings.GetLocation(typeof(Font)) + filename, FileMode.Open)))
+            try
             {
-                GameEngine.Font.Decoder decoder = new GameEngine.Font.Decoder();
-                this.characters = decoder.Convert(reader, Bootstrap.graphics.GraphicsDevice);
+                using (BinaryReader reader = new BinaryReader(File.Open(Settings.GetLocation(typeof(Font)) + filename, FileMode.Open)))
+                {
+                    GameEngine.Font.Decoder decoder = new GameEngine.Font.Decoder();
+                    this.characters = decoder.Convert(reader, Bootstrap.graphics.GraphicsDevice);
+                }
+                this.loaded = true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
             }
         }
 

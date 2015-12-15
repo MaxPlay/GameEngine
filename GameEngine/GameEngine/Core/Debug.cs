@@ -29,6 +29,7 @@ namespace GameEngine.Core
                     writer.WriteLine(ConsoleColor.Cyan);
                     writer.WriteLine(ConsoleColor.Yellow);
                     writer.WriteLine("logfile.log");
+                    writer.WriteLine(3);
                 }
             }
 
@@ -39,6 +40,7 @@ namespace GameEngine.Core
             dSettings.ImportantConsoleColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), settingStrings[2]);
             dSettings.WarningConsoleColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), settingStrings[3]);
             dSettings.loggerFile = settingStrings[4];
+            dSettings.LogDepth = int.Parse(settingStrings[5]);
 
             settings = dSettings;
 

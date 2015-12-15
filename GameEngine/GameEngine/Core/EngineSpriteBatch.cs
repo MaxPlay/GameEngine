@@ -314,16 +314,8 @@ namespace GameEngine.Core
         {
             if (active)
             {
-                /****************************************************************
-                 *      BIG BOX OF HORROR!                                      *
-                 *                                                              *
-                 *      WARNING! THIS IS HARDCODED STUFF!                       *
-                 *                                                              *
-                 *      REMOVE IT! REMOVE IT! (hopefully on the next update)    *
-                 *                                                              *
-                 ****************************************************************/
                 if (font == null)
-                    font = (Assets.Font)Settings.Assets[0];
+                    font = Settings.DefaultFont;
 
                 if (UI)
                 {

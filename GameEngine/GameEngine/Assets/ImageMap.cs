@@ -26,7 +26,7 @@ namespace GameEngine.Assets
                     return subimages[index];
             }
         }
-        
+
         public ImageMap() : base(string.Empty, string.Empty) { }
         public ImageMap(string name, string filename)
             : base(name, filename)
@@ -36,55 +36,62 @@ namespace GameEngine.Assets
 
         public override void Load()
         {
-            using (FileStream stream = new FileStream(Settings.GetLocation(typeof(ImageMap)) + this.filename + ".xml", FileMode.Open))
+            try
             {
-                XmlReader reader = XmlReader.Create(stream);
-
-                Rectangle rect = new Rectangle();
-                int id = 0;
-
-                while (reader.Read())
+                using (FileStream stream = new FileStream(Settings.GetLocation(typeof(ImageMap)) + this.filename + ".xml", FileMode.Open))
                 {
+                    XmlReader reader = XmlReader.Create(stream);
 
-                    if (reader.NodeType == XmlNodeType.Element)
-                        switch (reader.Name)
+                    Rectangle rect = new Rectangle();
+                    int id = 0;
+
+                    while (reader.Read())
+                    {
+
+                        if (reader.NodeType == XmlNodeType.Element)
+                            switch (reader.Name)
+                            {
+                                case "x":
+                                    reader.Read();
+                                    rect.X = int.Parse(reader.Value);
+                                    break;
+                                case "y":
+                                    reader.Read();
+                                    rect.Y = int.Parse(reader.Value);
+                                    break;
+                                case "width":
+                                    reader.Read();
+                                    rect.Width = int.Parse(reader.Value);
+                                    break;
+                                case "height":
+                                    reader.Read();
+                                    rect.Height = int.Parse(reader.Value);
+                                    break;
+                                case "id":
+                                    reader.Read();
+                                    id = int.Parse(reader.Value);
+                                    break;
+                            }
+
+                        if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Area")
                         {
-                            case "x":
-                                reader.Read();
-                                rect.X = int.Parse(reader.Value);
-                                break;
-                            case "y":
-                                reader.Read();
-                                rect.Y = int.Parse(reader.Value);
-                                break;
-                            case "width":
-                                reader.Read();
-                                rect.Width = int.Parse(reader.Value);
-                                break;
-                            case "height":
-                                reader.Read();
-                                rect.Height = int.Parse(reader.Value);
-                                break;
-                            case "id":
-                                reader.Read();
-                                id = int.Parse(reader.Value);
-                                break;
+                            subimages.Add(id, rect);
+                            rect = new Rectangle();
                         }
 
-                    if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Area")
-                    {
-                        subimages.Add(id, rect);
-                        rect = new Rectangle();
+                        if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "ImageMap")
+                            break;
                     }
 
-                    if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "ImageMap")
-                        break;
+                    reader.Close();
+                    stream.Close();
                 }
-
-                reader.Close();
-                stream.Close();
+                base.Load();
             }
-            base.Load();
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
         }
 
         public static Asset Create(string filename, string name)

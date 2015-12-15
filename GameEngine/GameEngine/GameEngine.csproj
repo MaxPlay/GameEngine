@@ -170,7 +170,9 @@
     <Content Include="Sounds\ErrorSound.ogg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Textures\DefaultTexture.png" />
+    <Content Include="Textures\DefaultTexture.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameEngineContent\GameEngineContent.contentproj">
