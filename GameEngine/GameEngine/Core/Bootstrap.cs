@@ -176,7 +176,7 @@ namespace GameEngine.Core
                 0
                 );*/
 
-            spriteBatch.DrawText(font, "abcdefghijklmnopqrstuvwxyz", new Vector2(120, 200), Handle.TopLeft, Color.White, false);
+            spriteBatch.DrawText(font, "abcdefghijklmnopqrstuvwxyz", new Vector2(120, 200), Handle.MiddleRight, Color.White, false);
 
             spriteBatch.End();
             base.Draw(gameTime);

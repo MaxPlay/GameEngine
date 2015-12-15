@@ -146,16 +146,21 @@ namespace GameEngine.Core
         /// <param name="destinationRectangle">A rectangle that specifies (in screen coordinates) the destination for drawing
         ///     the sprite.</param>
         /// <param name="color">The color to tint a sprite. Use Color.White for full color with no tinting.</param>
-        public void Draw(Texture2D texture, Rectangle destinationRectangle, Color color, bool UI = false)
+        /// <param name="UI">Is this Text part of the UI? (default is false)</param>
+        public void Draw(Image texture, Rectangle destinationRectangle, Color color, bool UI = false)
         {
             if (active)
             {
+                //Nullcheck for the font.
+                if (texture.Texture == null)
+                    texture = Settings.DefaultTexture;
+
                 if (UI)
                 {
                     base.End();
                     base.Begin();
                 }
-                base.Draw(texture, destinationRectangle, color);
+                base.Draw(texture.Texture, destinationRectangle, color);
             }
         }
         /// <summary>
@@ -165,16 +170,21 @@ namespace GameEngine.Core
         /// <param name="texture">A texture.</param>
         /// <param name="position">The location (in screen coordinates) to draw the sprite.</param>
         /// <param name="color">The color to tint a sprite. Use Color.White for full color with no tinting.</param>
-        public void Draw(Texture2D texture, Vector2 position, Color color, bool UI = false)
+        /// <param name="UI">Is this Text part of the UI? (default is false)</param>
+        public void Draw(Image texture, Vector2 position, Color color, bool UI = false)
         {
             if (active)
             {
+                //Nullcheck for the font.
+                if (texture.Texture == null)
+                    texture = Settings.DefaultTexture;
+
                 if (UI)
                 {
                     base.End();
                     base.Begin();
                 }
-                base.Draw(texture, position, color);
+                base.Draw(texture.Texture, position, color);
             }
         }
         /// <summary>
@@ -188,16 +198,21 @@ namespace GameEngine.Core
         /// <param name="sourceRectangle">A rectangle that specifies (in texels) the source texels from a texture.
         ///     Use null to draw the entire texture.</param>
         /// <param name="color">The color to tint a sprite. Use Color.White for full color with no tinting.</param>
-        public void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle? sourceRectangle, Color color, bool UI = false)
+        /// <param name="UI">Is this Text part of the UI? (default is false)</param>
+        public void Draw(Image texture, Rectangle destinationRectangle, Rectangle? sourceRectangle, Color color, bool UI = false)
         {
             if (active)
             {
+                //Nullcheck for the font.
+                if (texture.Texture == null)
+                    texture = Settings.DefaultTexture;
+
                 if (UI)
                 {
                     base.End();
                     base.Begin();
                 }
-                base.Draw(texture, destinationRectangle, sourceRectangle, color);
+                base.Draw(texture.Texture, destinationRectangle, sourceRectangle, color);
             }
         }
         /// <summary>
@@ -209,16 +224,21 @@ namespace GameEngine.Core
         /// <param name="sourceRectangle">A rectangle that specifies (in texels) the source texels from a texture.
         ///     Use null to draw the entire texture.</param>
         /// <param name="color">The color to tint a sprite. Use Color.White for full color with no tinting.</param>
-        public void Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, bool UI = false)
+        /// <param name="UI">Is this Text part of the UI? (default is false)</param>
+        public void Draw(Image texture, Vector2 position, Rectangle? sourceRectangle, Color color, bool UI = false)
         {
             if (active)
             {
+                //Nullcheck for the font.
+                if (texture.Texture == null)
+                    texture = Settings.DefaultTexture;
+
                 if (UI)
                 {
                     base.End();
                     base.Begin();
                 }
-                base.Draw(texture, position, sourceRectangle, color);
+                base.Draw(texture.Texture, position, sourceRectangle, color);
             }
         }
         /// <summary>
@@ -239,16 +259,21 @@ namespace GameEngine.Core
         /// <param name="layerDepth">The depth of a layer. By default, 0 represents the front layer and 1 represents
         ///     a back layer. Use SpriteSortMode if you want sprites to be sorted during
         ///     drawing.</param>
-        public void Draw(Texture2D texture, Rectangle destinationRectangle, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, SpriteEffects effects, float layerDepth, bool UI = false)
+        /// <param name="UI">Is this Text part of the UI? (default is false)</param>
+        public void Draw(Image texture, Rectangle destinationRectangle, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, SpriteEffects effects, float layerDepth, bool UI = false)
         {
             if (active)
             {
+                //Nullcheck for the font.
+                if (texture.Texture == null)
+                    texture = Settings.DefaultTexture;
+
                 if (UI)
                 {
                     base.End();
                     base.Begin();
                 }
-                base.Draw(texture, destinationRectangle, sourceRectangle, color, rotation, origin, effects, layerDepth);
+                base.Draw(texture.Texture, destinationRectangle, sourceRectangle, color, rotation, origin, effects, layerDepth);
             }
         }
         /// <summary>
@@ -268,16 +293,21 @@ namespace GameEngine.Core
         /// <param name="layerDepth">The depth of a layer. By default, 0 represents the front layer and 1 represents
         ///     a back layer. Use SpriteSortMode if you want sprites to be sorted during
         ///     drawing.</param>
-        public void Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, float scale, SpriteEffects effects, float layerDepth, bool UI = false)
+        /// <param name="UI">Is this Text part of the UI? (default is false)</param>
+        public void Draw(Image texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, float scale, SpriteEffects effects, float layerDepth, bool UI = false)
         {
             if (active)
             {
+                //Nullcheck for the font.
+                if (texture.Texture == null)
+                    texture = Settings.DefaultTexture;
+
                 if (UI)
                 {
                     base.End();
                     base.Begin();
                 }
-                base.Draw(texture, position, sourceRectangle, color, rotation, origin, scale, effects, layerDepth);
+                base.Draw(texture.Texture, position, sourceRectangle, color, rotation, origin, scale, effects, layerDepth);
             }
         }
         /// <summary>
@@ -297,23 +327,38 @@ namespace GameEngine.Core
         /// <param name="layerDepth">The depth of a layer. By default, 0 represents the front layer and 1 represents
         ///     a back layer. Use SpriteSortMode if you want sprites to be sorted during
         ///     drawing.</param>
-        public void Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects, float layerDepth, bool UI = false)
+        /// <param name="UI">Is this Text part of the UI? (default is false)</param>
+        public void Draw(Image texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects, float layerDepth, bool UI = false)
         {
             if (active)
             {
+                //Nullcheck for the font.
+                if (texture.Texture == null)
+                    texture = Settings.DefaultTexture;
+
                 if (UI)
                 {
                     base.End();
                     base.Begin();
                 }
-                base.Draw(texture, position, sourceRectangle, color, rotation, origin, scale, effects, layerDepth);
+                base.Draw(texture.Texture, position, sourceRectangle, color, rotation, origin, scale, effects, layerDepth);
             }
         }
 
+        /// <summary>
+        /// Writes a text on the screen.
+        /// </summary>
+        /// <param name="font">A font.</param>
+        /// <param name="text">The text</param>
+        /// <param name="position">The position of the text-handle on screen</param>
+        /// <param name="relativeHandle">The text-handle</param>
+        /// <param name="color">The color of the text.</param>
+        /// <param name="UI">Is this Text part of the UI? (default is true)</param>
         public void DrawText(Assets.Font font, string text, Vector2 position, Handle relativeHandle, Color color, bool UI = true)
         {
             if (active)
             {
+                //Nullcheck for the font.
                 if (font == null)
                     font = Settings.DefaultFont;
 
@@ -323,8 +368,10 @@ namespace GameEngine.Core
                     base.Begin();
                 }
 
-                int charoffset = 0;
-                int heightoffset = 0;
+                Vector2 handleOffset = -font.GetHandleOffset(relativeHandle, text);
+
+                int charoffset = (int)handleOffset.X;
+                int heightoffset = (int)handleOffset.Y;
                 for (int i = 0; i < text.Length; i++)
                 {
                     base.Draw(font[text[i]], position + Vector2.UnitX * charoffset + Vector2.UnitY * heightoffset, color);
