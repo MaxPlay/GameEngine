@@ -14,9 +14,9 @@ namespace GameEngine.Components.UI
     [RequireComponent(typeof(UIRenderer))]
     class Button : Component
     {
-        UIRenderer renderer;
-        Rectangle AABB;
-        bool hover;
+        protected UIRenderer renderer;
+        protected Rectangle AABB;
+        protected bool hover;
 
         public bool Hover { get { return this.hover; } }
 
