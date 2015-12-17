@@ -13,15 +13,9 @@ namespace GameEngine.Components.UI
         Checked
     }
 
-    public class Checkbox : Button
+    public class Checkbox : UIBase
     {
         public CheckBoxState State;
-
-        public Checkbox()
-            : base()
-        {
-            this.State = CheckBoxState.Unchecked;
-        }
 
         public Checkbox(GameObject gameObject)
             : base(gameObject)
@@ -29,11 +23,22 @@ namespace GameEngine.Components.UI
             this.State = CheckBoxState.Unchecked;
         }
 
-        protected override void OnClicked()
+        public Checkbox()
+            : base(null)
+        {
+            this.State = CheckBoxState.Unchecked;
+        }
+
+        protected new void OnClicked()
         {
             this.State = (this.State == CheckBoxState.Unchecked) ? CheckBoxState.Checked : CheckBoxState.Unchecked;
 
             base.OnClicked();
+        }
+
+        public override void Reset()
+        {
+            throw new NotImplementedException();
         }
     }
 }

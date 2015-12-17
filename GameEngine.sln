@@ -2,12 +2,20 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine", "GameEngine\GameEngine\GameEngine.csproj", "{7086A9DE-62ED-488C-B88A-99E4023421A2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F3579514-929A-460F-8459-3B5D734C1409} = {F3579514-929A-460F-8459-3B5D734C1409}
+		{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3} = {7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}
+		{046BDFD6-EC39-4563-99A4-FC18BC8E1C0F} = {046BDFD6-EC39-4563-99A4-FC18BC8E1C0F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngineContent", "GameEngine\GameEngineContent\GameEngineContent.contentproj", "{8C9CF871-1E25-4CC3-B157-D7D76C7DEAA8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine.Font", "GameEngine.Font\GameEngine.Font.csproj", "{F3579514-929A-460F-8459-3B5D734C1409}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontGenerator", "FontGenerator\FontGenerator.csproj", "{046BDFD6-EC39-4563-99A4-FC18BC8E1C0F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F3579514-929A-460F-8459-3B5D734C1409} = {F3579514-929A-460F-8459-3B5D734C1409}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pathfinding", "Pathfinding\Pathfinding.csproj", "{7EECD1B9-3DA1-4FA0-8966-6473B820BAD3}"
 EndProject

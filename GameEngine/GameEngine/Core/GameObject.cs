@@ -24,7 +24,7 @@ namespace GameEngine.Core
         {
             components = new List<Component>();
             aquireComponents(typeof(GameObject));
-
+            isStatic = false;
         }
 
         public GameObject(GameObject obj)
@@ -32,6 +32,7 @@ namespace GameEngine.Core
             components = new List<Component>();
             foreach (Component c in obj.components)
                 aquireComponents(c.GetType());
+            isStatic = false;
         }
 
         /// <summary>

@@ -127,6 +127,29 @@ namespace GameEngine.Core
             }
         }
         /// <summary>
+        /// Begins a sprite batch operation using the specified sort, blend, sampler,
+        ///    depth stencil and rasterizer state objects, plus a custom effect. Passing
+        ///    null for any of the state objects selects the default default state objects
+        ///    (BlendState.AlphaBlend, DepthStencilState.None, RasterizerState.CullCounterClockwise,
+        ///    SamplerState.LinearClamp). Passing a null effect selects the default SpriteBatch
+        ///    Class shader.
+        /// </summary>
+        /// <param name="shader">Shader state options.</param>
+        /// <param name="TransformMatrix">A custom TransformMatrix</param>
+        public void Begin(Shader shader, Matrix TransformMatrix)
+        {
+            if (!active)
+            {
+                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, shader.CompiledHLSL_Shader, TransformMatrix);
+                active = true;
+            }
+            else
+            {
+                base.End();
+                base.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, shader.CompiledHLSL_Shader, TransformMatrix);
+            }
+        }
+        /// <summary>
         /// Flushes the sprite batch and restores the device state to how it was before
         /// Begin was called.
         /// </summary>

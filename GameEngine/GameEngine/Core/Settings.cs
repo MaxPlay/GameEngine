@@ -18,6 +18,7 @@ namespace GameEngine.Core
         {
             assets = new List<Asset>();
             locations = new Dictionary<Type, string>();
+            gameObjects = new List<GameObject>();
         }
 
         private static int defaultFont;
@@ -95,10 +96,48 @@ namespace GameEngine.Core
             return true;
         }
 
+        private static List<GameObject> gameObjects;
+
+        /// <summary>
+        /// A list of all GameObjects in the level.
+        /// </summary>
+        public static GameObject[] GameObject { get { return gameObjects.ToArray(); } }
+        /// <summary>
+        /// A list of all active GameObjects in the level.
+        /// </summary>
+        public static GameObject[] ActiveGameObjects { get { return gameObjects.Where(g => g.Active).ToArray(); } }
+
         /// <summary>
         /// A readonly list of all the active assets.
         /// </summary>
         public static Asset[] Assets { get { return assets.ToArray(); } }
+
+        /// <summary>
+        /// This method is used to register GameObjects in the Engine.
+        /// GameObjects normally register themselves and won't be added again, if they already exist in the list.
+        /// </summary>
+        /// <param name="gameObject">The gameobject that needs to be registered.</param>
+        /// <returns>True if successfully registered.</returns>
+        public static bool RegisterGameObject(GameObject gameObject)
+        {
+            if (gameObjects.Contains(gameObject))
+                return false;
+
+            gameObjects.Add(gameObject);
+            return true;
+        }
+        /// <summary>
+        /// Removes the gameObject from the list.
+        /// It doesn't delete the object though.
+        /// </summary>
+        /// <param name="gameObject">The object that needs to be removed.</param>
+        public static void RemoveGameObject(GameObject gameObject)
+        {
+            if (gameObjects.Contains(gameObject))
+                gameObjects.Remove(gameObject);
+
+            GC.Collect();
+        }
 
         /// <summary>
         /// Loads or (if already loaded) just gets an asset.

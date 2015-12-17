@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Components.Rendering
 {
-    abstract class BaseRenderer : Component
+    public abstract class BaseRenderer : Component
     {
         protected Material material;
 

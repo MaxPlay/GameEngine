@@ -15,8 +15,6 @@ namespace GameEngine.Components.Audio
 
         float range;
         public float Range { get { return range; } set { this.range = value; } }
-        bool active;
-        public bool Active { get { return this.active; } set { this.active = value; } }
         float volume;
         public float Volume { get { return this.volume; } set { this.volume = Math.Abs(value); } }
 

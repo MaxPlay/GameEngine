@@ -40,7 +40,10 @@ namespace GameEngine.Components.Rendering
 
         public override void Draw(Matrix TransformMatrix)
         {
-            Bootstrap.spriteBatch.Begin(material.Shader);
+            if (TransformMatrix == null)
+                Bootstrap.spriteBatch.Begin(material.Shader, TransformMatrix);
+            else
+                Bootstrap.spriteBatch.Begin(material.Shader);
             if (!isAnimated)
                 Bootstrap.spriteBatch.Draw(
                     Texture.Texture,

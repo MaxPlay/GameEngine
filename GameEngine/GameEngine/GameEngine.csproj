@@ -124,6 +124,8 @@
     <Compile Include="Components\Rendering\BaseRenderer.cs" />
     <Compile Include="Components\Rendering\Camera.cs" />
     <Compile Include="Components\UI\Checkbox.cs" />
+    <Compile Include="Components\UI\Textbox.cs" />
+    <Compile Include="Components\UI\UIBase.cs" />
     <Compile Include="Core\Debug.cs" />
     <Compile Include="Core\DebugSettings.cs" />
     <Compile Include="Core\DeveloperConsole.cs" />
@@ -170,6 +172,7 @@
     </Content>
     <Content Include="Resources\Locations.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Shaders\DefaultShader.fx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

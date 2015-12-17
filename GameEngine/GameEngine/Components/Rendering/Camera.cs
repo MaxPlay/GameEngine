@@ -12,15 +12,23 @@ namespace GameEngine.Components.Rendering
 {
     class Camera : Component
     {
+        /// <summary>
+        /// The active main Camera.
+        /// </summary>
         public static Camera main;
-
 
         private Color backgroundColor;
         private float zoom;
         private Rectangle bounds;
 
+        /// <summary>
+        /// The color that will be used as Clear-Color.
+        /// </summary>
         public Color BackgroundColor { get { return this.backgroundColor; } set { this.backgroundColor = value; } }
 
+        /// <summary>
+        /// The Transformation Matrix of the 2D-Camera
+        /// </summary>
         public Matrix TransformMatrix
         {
             get
@@ -33,8 +41,13 @@ namespace GameEngine.Components.Rendering
                     );
             }
         }
-
+        /// <summary>
+        /// The current Zoomvalue
+        /// </summary>
         public float Zoom { get { return this.zoom; } set { this.zoom = value; } }
+        /// <summary>
+        /// The Viewport in the real world
+        /// </summary>
         public Viewport Viewport
         {
             get
@@ -69,12 +82,19 @@ namespace GameEngine.Components.Rendering
             this.zoom = 1;
         }
 
+        /// <summary>
+        /// Resets the camera to its default values.
+        /// </summary>
         public override void Reset()
         {
             this.bounds = new Rectangle(0, 0, Bootstrap.graphics.PreferredBackBufferWidth, Bootstrap.graphics.PreferredBackBufferHeight);
             this.zoom = 1;
         }
 
+        /// <summary>
+        /// This method is used to get the Mouseposition on the world, translated by the camera. If the camera is moved, the position of the mouse in the world will change as well.
+        /// </summary>
+        /// <returns>A Vector2 for the translated MousePosition.</returns>
         public Vector2 TranslatedCursorPosition()
         {
             return new Vector2(Mouse.GetState().X, Mouse.GetState().Y) + this.Transform.Position - new Vector2(this.bounds.Width * 0.5f, this.bounds.Height * 0.5f);

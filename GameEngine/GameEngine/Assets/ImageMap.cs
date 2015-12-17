@@ -94,7 +94,7 @@ namespace GameEngine.Assets
             }
         }
 
-        public static Asset Create(string filename, string name)
+        public static new Asset Create(string filename, string name)
         {
             return Settings.AquireAsset<ImageMap>(filename, name);
         }
