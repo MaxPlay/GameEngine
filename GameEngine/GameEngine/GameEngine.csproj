@@ -148,6 +148,7 @@
     <Compile Include="Exception\FileNotSupportedException.cs" />
     <Compile Include="Extension\ArrayExtension.cs" />
     <Compile Include="Pipeline\ImporterContext.cs" />
+    <Compile Include="Pipeline\InputManager.cs" />
     <Compile Include="Pipeline\LevelLoader.cs" />
     <Compile Include="Pipeline\Logger.cs" />
     <Compile Include="Pipeline\ProcessorContext.cs" />

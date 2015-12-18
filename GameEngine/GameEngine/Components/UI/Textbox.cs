@@ -14,7 +14,7 @@ namespace GameEngine.Components.UI
         private StringBuilder inputText;
         private int cursor;
 
-        public string Text { get { return this.inputText.ToString(); } }
+        public new string Text { get { return this.inputText.ToString(); } }
 
         public Textbox()
             : base(null)

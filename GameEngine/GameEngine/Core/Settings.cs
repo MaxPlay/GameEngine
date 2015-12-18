@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using Microsoft.Xna.Framework.Input;
 
 namespace GameEngine.Core
 {
@@ -19,6 +20,7 @@ namespace GameEngine.Core
             assets = new List<Asset>();
             locations = new Dictionary<Type, string>();
             gameObjects = new List<GameObject>();
+            Input = new Pipeline.InputManager();
         }
 
         private static int defaultFont;
@@ -44,6 +46,8 @@ namespace GameEngine.Core
                 return locations[type];
             return string.Empty;
         }
+
+        public static Pipeline.InputManager Input;
 
         /// <summary>
         /// This represents a single Unit in Pixel.
