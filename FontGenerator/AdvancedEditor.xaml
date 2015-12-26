@@ -1,0 +1,36 @@
+﻿<Window x:Class="FontGenerator.AdvancedEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Advanced Editor" Height="300" Width="463.976" Activated="Window_Activated" UseLayoutRounding="True">
+    <Grid Margin="0,0,3.8,0">
+        <ListBox x:Name="lbItems" HorizontalAlignment="Left" Height="220" Margin="10,42,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="lbItems_SelectionChanged"/>
+        <Label Content="Characters" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_Add" Content="Add" HorizontalAlignment="Left" Margin="115,42,0,0" VerticalAlignment="Top" Width="75" Click="btn_Add_Click"/>
+        <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Left" Margin="115,69,0,0" VerticalAlignment="Top" Width="75" Click="btn_Delete_Click"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="371,240,0,0" VerticalAlignment="Top" Width="75" Click="btnClose_Click"/>
+        <Label Content="Top" HorizontalAlignment="Left" Margin="239,39,0,0" VerticalAlignment="Top"/>
+        <Label Content="Left" HorizontalAlignment="Left" Margin="239,70,0,0" VerticalAlignment="Top"/>
+        <Label Content="Width" HorizontalAlignment="Left" Margin="345,70,0,0" VerticalAlignment="Top"/>
+        <Label Content="Height" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="341,39,0,0"/>
+        <TextBox x:Name="tbTop" HorizontalAlignment="Left" MaxLines="1" Height="23" Margin="274,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54"  PreviewKeyDown="Dimension_PreviewKeyInput" TextChanged="DimensionTop_TextChanged"/>
+        <TextBox x:Name="tbLeft" HorizontalAlignment="Left" MaxLines="1" Height="23" Margin="274,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" PreviewKeyDown="Dimension_PreviewKeyInput" TextChanged="DimensionLeft_TextChanged"/>
+        <TextBox x:Name="tbHeight" HorizontalAlignment="Left" MaxLines="1" Height="23" Margin="392,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" PreviewKeyDown="Dimension_PreviewKeyInput" TextChanged="DimensionHeight_TextChanged"/>
+        <TextBox x:Name="tbWidth" HorizontalAlignment="Left" MaxLines="1" Height="23" Margin="392,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" PreviewKeyDown="Dimension_PreviewKeyInput" TextChanged="DimensionWidth_TextChanged"/>
+        <Label Content="Preview" HorizontalAlignment="Left" Margin="139,108,0,0" VerticalAlignment="Top"/>
+        <Rectangle x:Name="imgPreviewBackground" HorizontalAlignment="Left" Height="100" Margin="140,131,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" Grid.Row="0" Grid.Column="0" StrokeThickness="0">
+            <Rectangle.Fill>
+                <SolidColorBrush x:Name="imgBackground" Color="White"></SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="imgPreview" HorizontalAlignment="Left" Height="100" Margin="140,131,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" Grid.Row="0" Grid.Column="0" StrokeThickness="0">
+            <Rectangle.Fill>
+                <ImageBrush x:Name="imgBrush"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Button x:Name="BackgroundBlack" Content="" HorizontalAlignment="Left" Margin="115,131,0,0" VerticalAlignment="Top" Width="20" Background="Black" Height="20" BorderThickness="1" BorderBrush="Gray" Padding="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="Background_Click"/>
+        <Button x:Name="BackgroundGray" Content="" HorizontalAlignment="Left" Margin="115,156,0,0" VerticalAlignment="Top" Width="20" Background="Gray" Height="20" BorderThickness="1" BorderBrush="Gray" Padding="0" Style="{StaticResource ResourceKey={x:Static ToolBar.ButtonStyleKey}}" Click="Background_Click"/>
+        <Button x:Name="BackgroundWhite" Content="" HorizontalAlignment="Left" Margin="115,181,0,0" VerticalAlignment="Top" Width="20" Background="White" Height="20" BorderThickness="1" BorderBrush="Gray" Padding="0" Style="{StaticResource ResourceKey={x:Static ToolBar.ButtonStyleKey}}" Click="Background_Click"/>
+        <ComboBox x:Name="cbCharselector" HorizontalAlignment="Left" Margin="392,108,0,0" VerticalAlignment="Top" Width="54" SelectionChanged="cbCharselector_SelectionChanged"/>
+        <Label Content="Character" HorizontalAlignment="Left" Margin="326,108,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
